@@ -20,7 +20,21 @@ require([
     esriConfig.apiKey = "AAPKb765a73f61db40b189cd2ec292a872aaUGEazH9qCAdMNXi_0IzSi0RV3jKMpqezs6gUtr8xIRhZTPMnXU8AbU5t3L-WxZFQ";
     
     const aviationStackKey = "8a4f61a109f79d1998270def600ba85c";
-    const aptsJSON = "http://api.aviationstack.com/v1/airports?access_key=" + aviationStackKey;
+
+    $.getJSON("http://api.aviationstack.com/v1/airports?access_key=" + aviationStackKey, (jsonData) => {
+        var aptsGeoJSON = {}
+        aptsGeoJSON['properties'] = jsonData
+        aptsGeoJSON['type'] = 'Feature';
+        aptsGeoJSON['geometry'] = {
+            "type": "Point",
+            "coordinates": [
+                jsonData['latitude'], jsonData['longitude']
+            ]
+        }
+        console.log(aptsGeoJSON);
+    });
+   
+    /*const aptsJSON = "http://api.aviationstack.com/v1/airports?access_key=" + aviationStackKey;
     var aptsGeoJSON = {};
     aptsGeoJSON['properties'] = aptsJSON
     aptsGeoJSON['type'] = 'Feature';
@@ -29,7 +43,7 @@ require([
         "coordinates": [
             aptsJSON['latitude'], aptsJSON['longitude']
         ]
-    }
+    }*/
 
 
     const map = new Map({
