@@ -43,7 +43,7 @@ require([
         camera: {
             position: {
                 x: -97,
-                y: 20,
+                y: 10,
                 z: 3500000
             },
             tilt: 35
