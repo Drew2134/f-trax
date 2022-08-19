@@ -31,7 +31,7 @@ require([
             position: {
                 x: -97,
                 y: 38,
-                z: 500000
+                z: 1000000
             },
             tilt: 30
         }
