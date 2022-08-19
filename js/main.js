@@ -1,8 +1,13 @@
 require([
+    //ArcGIS JS API
     "esri/config",
     "esri/Map",
-    "esri/views/SceneView"
-], function(esriConfig, Map, SceneView){
+    "esri/views/SceneView",
+
+    //Bootstrap
+    "bootstrap/Collapse",
+    "bootstrap/Dropdown"
+], function(esriConfig, Map, SceneView, Collapse, Dropdown){
 
     esriConfig.apiKey = "AAPKb765a73f61db40b189cd2ec292a872aaUGEazH9qCAdMNXi_0IzSi0RV3jKMpqezs6gUtr8xIRhZTPMnXU8AbU5t3L-WxZFQ"
 
