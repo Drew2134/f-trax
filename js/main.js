@@ -6,8 +6,10 @@ require([
 
     //Bootstrap
     "bootstrap/Collapse",
-    "bootstrap/Dropdown"
-], function(esriConfig, Map, SceneView, Collapse, Dropdown){
+    "bootstrap/Dropdown",
+
+    "dojo/domReady!"
+], function(esriConfig, Map, SceneView, Collapse, Dropdown, CalciteMapArcGISSupport){
 
     esriConfig.apiKey = "AAPKb765a73f61db40b189cd2ec292a872aaUGEazH9qCAdMNXi_0IzSi0RV3jKMpqezs6gUtr8xIRhZTPMnXU8AbU5t3L-WxZFQ"
 
@@ -27,6 +29,10 @@ require([
             },
             tilt: 30
         }
-    })
+    });
+
+    scene.when(() => {
+        CalciteMapArcGISSupport.setPopupPanelSync(scene);
+    });
 
 });
