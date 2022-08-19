@@ -74,10 +74,22 @@
         </div>
         <!--End Map-->
 
+        <script type="text/javascript">
+            var dojoConfig = {
+              packages: [{
+                name: "bootstrap",
+                location: "https://esri.github.io/calcite-maps/dist/vendor/dojo-bootstrap"
+              },
+              {
+                name: "calcite-maps",
+                location: "https://esri.github.io/calcite-maps/dist/js/dojo"
+              }]
+            };
+          </script>
+
         <script src="https://js.arcgis.com/4.24/"></script>
         <script src="lib/jquery-3.6.0.js"></script>
         <script type="module" src="https://js.arcgis.com/calcite-components/1.0.0-beta.91/calcite.esm.js"></script>
-        <script src="js/dojoConfig.js"></script>
         <script src="js/main.js"></script>
     </body>
 </html>
