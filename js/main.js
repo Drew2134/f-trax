@@ -21,7 +21,7 @@ require([
     
     const aviationStackKey = "8a4f61a109f79d1998270def600ba85c";
 
-    $.getJSON("http://api.aviationstack.com/v1/airports?access_key=" + aviationStackKey, (jsonData) => {
+    $.getJSON("https://api.aviationstack.com/v1/airports?access_key=" + aviationStackKey, (jsonData) => {
         var aptsGeoJSON = {}
         aptsGeoJSON['properties'] = jsonData
         aptsGeoJSON['type'] = 'Feature';
