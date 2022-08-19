@@ -8,8 +8,14 @@ require([
     "bootstrap/Collapse",
     "bootstrap/Dropdown",
 
+    //Calcite Maps
+    "calcite-maps/calcitemaps-v0.10",
+    
+    //Calcite Maps ArcGIS Support
+    "calcite-maps/calcitemaps-arcgis-support-v0.10",
+
     "dojo/domReady!"
-], function(esriConfig, Map, SceneView, Collapse, Dropdown, CalciteMapArcGISSupport){
+], function(esriConfig, Map, SceneView, Collapse, Dropdown, CalciteMaps, CalciteMapArcGISSupport){
 
     esriConfig.apiKey = "AAPKb765a73f61db40b189cd2ec292a872aaUGEazH9qCAdMNXi_0IzSi0RV3jKMpqezs6gUtr8xIRhZTPMnXU8AbU5t3L-WxZFQ"
 
