@@ -214,17 +214,40 @@ require([
 
             //Stylize the airports with ESRI Airport Icon
             let planeSymbol = {
-                type: "point-3d",
-                symbolLayers: [{
-                    type: "object",
-                    width: 21.539997100830078,
-                    height: 7.0347914695739746,
-                    depth: 25.677627563476563,
-                    anchor: "origin",
-                    resource: {
-                        "href":"https://static.arcgis.com/arcgis/styleItems/RealisticTransportation/web/resource/Airplane_Large_Passenger.json"
+                type: "unique-value",
+                field: "category",
+                uniqueValueInfos: [
+                    {
+                        value: 2,
+                        symbol: {
+                            type: "web-style",
+                            name: "Airplane_Private",
+                            styleName: "EsriRealisticTransportationStyle"
+                        }
+                    },
+                    {
+                        value: 3,
+                        symbol: {
+                            type: "web-style",
+                            name: "Airplane_Small_Passenger",
+                            styleName: "EsriRealisticTransportationStyle"
+                        }
+                    },
+                    {
+                        value: 4,
+                        symbol: {
+                            type: "web-style",
+                            name: "Airplane_Large_Passenger",
+                            styleName: "EsriRealisticTransportationStyle"
+                        }
                     }
-                }]
+                ],
+                visualVariables: [
+                    {
+                        type: "rotation",
+                        field: "true-track"
+                    }
+                ]
             };
 
             //Render airports with custom style
