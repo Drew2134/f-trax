@@ -235,12 +235,6 @@ require([
                             styleName: "EsriRealisticTransportationStyle"
                         }
                     }
-                ],
-                visualVariables: [
-                    {
-                        type: "rotation",
-                        field: "true-track"
-                    }
                 ]
             };
 
