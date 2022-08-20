@@ -182,6 +182,13 @@ require([
     CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
 
     $.getJSON("https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226", function(jsonData){
-        console.log(jsonData)
+        var flightsGeoJSON = {}
+        flightsGeoJSON['properties'] = jsonData
+        flightsGeoJSON['type'] = "Feature"
+        flightsGeoJSON['geometry'] = {
+            "type": "Point",
+            "coordinates": [jsonData['latitude'], jsonData['longitude']]
+        }
+        console.log(flightsGeoJSON)
     })
 });
