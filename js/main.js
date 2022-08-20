@@ -36,9 +36,7 @@ require([
     console.log(aptSymbol)
     aptsLayer.renderer = {
         type: "simple",
-        symbol: {
-            "name":"Pushpin 1","type":"PointSymbol3D","symbolLayers":[
-                {"type":"Icon","size":20,"anchor":"bottom","material":{"color":[255,240,0],"transparency":0},"resource":{"href":"https://static.arcgis.com/arcgis/styleItems/Icons/web/resource/Pushpin1.svg"}}]}
+        symbol: aptSymbol
     }
 
     const rnwyGeoJSON = "data/runways.geojson";
