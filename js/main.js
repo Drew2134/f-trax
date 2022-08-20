@@ -20,12 +20,12 @@ require([
 
     esriConfig.apiKey = "AAPKb765a73f61db40b189cd2ec292a872aaUGEazH9qCAdMNXi_0IzSi0RV3jKMpqezs6gUtr8xIRhZTPMnXU8AbU5t3L-WxZFQ";
     
-    const aptsJSON = "data/airports.geojson";
+    const aptsGeoJSON = "data/airports.geojson";
 
     const aptsLayer = new GeoJSONLayer({
-        url: aptsJSON,
+        url: aptsGeoJSON,
         copyright: "U.S. DOT",
-        definitionExpression: "Fac_Type = 'AIRPORT'"
+        definitionExpression: "Fac_Type = 'AIRPORT' AND Fac_Use = 'PU'"
     });
 
     const map = new Map({
