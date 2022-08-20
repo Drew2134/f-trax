@@ -160,7 +160,8 @@ require([
                 exactMatch: false,
                 outFields: ["*"],
                 name: "Airports",
-                placeholder: "example: MKE"
+                placeholder: "example: MKE",
+                zoomScale: 250000
             }
         ]
     });
