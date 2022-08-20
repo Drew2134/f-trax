@@ -186,7 +186,8 @@ require([
             "type": "FeatureCollection",
             "name": "Active Flights",
             "features": []
-        }
+        };
+
         jsonData.states.forEach((item) => {
             let geoJSONFeature = {}
             geoJSONFeature['properties'] = item
@@ -196,10 +197,16 @@ require([
                 "coordinates": [item[5], item[6]]
             }
             geoJson.features.push(geoJSONFeature)
-        })
+        });
+
+        const blob = new Blob([JSON.stringify(geoJson)], {
+            type: "application/json"
+        });
+
+        const url = URL.createObjectURL(blob);
         
         const flightsLayer = new GeoJSONLayer({
-            url: geoJson,
+            url: url,
             copyright: "The OpenSky Network, https://opensky-network.org",
         });
         
