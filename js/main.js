@@ -210,6 +210,27 @@ require([
                 url: url,
                 copyright: "The OpenSky Network, https://opensky-network.org",
             });
+
+            //Stylize the airports with ESRI Airport Icon
+            let planeSymbol = {
+                type: "point-3d",
+                symbolLayers: [{
+                    type: "object",
+                    width: 21.539997100830078,
+                    height: 7.0347914695739746,
+                    depth: 25.677627563476563,
+                    anchor: "origin",
+                    resource: {
+                        "href":"https://static.arcgis.com/arcgis/styleItems/RealisticTransportation/web/resource/Airplane_Large_Passenger.json"
+                    }
+                }]
+            };
+
+            //Render airports with custom style
+            flightsLayer.renderer = {
+                type: "simple",
+                symbol: planeSymbol
+            }
             
             map.add(flightsLayer)
         })
