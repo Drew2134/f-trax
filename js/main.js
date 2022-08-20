@@ -20,12 +20,59 @@ require([
 
     esriConfig.apiKey = "AAPKb765a73f61db40b189cd2ec292a872aaUGEazH9qCAdMNXi_0IzSi0RV3jKMpqezs6gUtr8xIRhZTPMnXU8AbU5t3L-WxZFQ";
 
-    const aptsGeoJSON = "data/airports.geojson";
-    const aptsLayer = new GeoJSONLayer({
-        url: aptsGeoJSON,
+    const aptGeoJSON = "data/airports.geojson";
+    const aptLayer = new GeoJSONLayer({
+        url: aptGeoJSON,
         copyright: "U.S. DOT",
+        outFields: [
+            "Fac_Name",
+            "Loc_Id",
+            "City",
+            "County",
+            "State_Name",
+            "Owner_Name",
+            "Responsible_Artcc_Name",
+            "Responsible_Artcc_Comp_Id"
+        ],
         definitionExpression: "Fac_Type = 'AIRPORT' AND Fac_Use = 'PU'"
-    }); 
+    });
+
+    const aptTemplate = {
+        title: "{Fac_Name} Airport - {Loc_Id}",
+        content: [
+            {
+                type: "fields",
+                fieldInfos: [
+                    {
+                        fieldName: "City",
+                        label: "City"
+                    },
+                    {
+                        fieldName: "County",
+                        label: "County"
+                    },
+                    {
+                        fieldName: "State_Name",
+                        label: "State"
+                    },
+                    {
+                        fieldName: "Owner_Name",
+                        label: "Owner"
+                    },
+                    {
+                        fieldName: "Responsible_Artcc_Name",
+                        label: "ARTCC Name"
+                    },
+                    {
+                        fieldName: "Responsible_Artcc_Comp_Id",
+                        label: "ARTCC Id"
+                    }
+                ]
+            }
+        ]
+    };
+
+    aptLayer.popupTemplate = aptTemplate;
     
     //Stylize the airports with ESRI Airport Icon
     let aptSymbol = {
@@ -45,7 +92,7 @@ require([
     };
     
     //Render airports with custom style
-    aptsLayer.renderer = {
+    aptLayer.renderer = {
         type: "simple",
         symbol: aptSymbol
     }
@@ -59,7 +106,7 @@ require([
     const map = new Map({
         basemap: "arcgis-topographic",
         ground: "world-elevation",
-        layers: [aptsLayer, rnwyLayer]
+        layers: [aptLayer, rnwyLayer]
     });
 
     const scene = new SceneView({
