@@ -19,9 +19,15 @@ require([
 ], function(esriConfig, Map, GeoJSONLayer, SceneView, Collapse, Dropdown, CalciteMaps, CalciteMapArcGISSupport){
 
     esriConfig.apiKey = "AAPKb765a73f61db40b189cd2ec292a872aaUGEazH9qCAdMNXi_0IzSi0RV3jKMpqezs6gUtr8xIRhZTPMnXU8AbU5t3L-WxZFQ";
+    
+    // create a new blob from geojson featurecollection
+    const blob = new Blob([JSON.stringify(geojson)], {
+        type: "application/json"
+    });
+    const url = URL.createObjectURL(blob);
 
     const aptsLayer = new GeoJSONLayer({
-        url: "data/airport.geojson",
+        url: url,
         copyright: "U.S. DOT",
         definitionExpression: "Fac_Type = 'Airport'"
     });
