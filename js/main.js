@@ -197,17 +197,19 @@ require([
                     "type": "Point",
                     "coordinates": [item[5], item[6], item[13]]
                 }
+                geoJSONFeature['properties'] = {
+                    "callsign": item[1],
+                    "origin_country": item[2],
+                    "longitude": item[5],
+                    "latitude": item[6],
+                    "on_ground": item[8],
+                    "velocity": item[9],
+                    "true_track": item[10],
+                    "vertical_rate": item[11],
+                    "geo_altitude": item[13],
+                    "category": item[17]
+                }
                 console.log(geoJSONFeature, geoJSONFeature.properties)
-                geoJSONFeature.properties.callsign = item[1]
-                geoJSONFeature.properties.origin_country = item[2]
-                geoJSONFeature.properties.longitude = item[5]
-                geoJSONFeature.properties.latitude = item[6]
-                geoJSONFeature.properties.on_ground = item[8]
-                geoJSONFeature.properties.velocity = item[9]
-                geoJSONFeature.properties.true_track = item[10]
-                geoJSONFeature.properties.vertical_rate = item[11]
-                geoJSONFeature.properties.geo_altitude = item[13]
-                geoJSONFeature.properties.category = item[17]
                 geoJson.features.push(geoJSONFeature)
             });
 
