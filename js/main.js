@@ -31,7 +31,7 @@ require([
     let aptSymbol = {
         type: "point-3d",
         symbolLayers: [{
-            type: "Icon",
+            type: "icon",
             size: 16,
             anchor: "bottom",
             material: {
