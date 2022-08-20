@@ -188,7 +188,14 @@ require([
             "features": []
         }
         jsonData.states.forEach((item) => {
-            geoJson.features.push(item)
+            let geoJSONFeature = {}
+            geoJSONFeature['properties'] = item
+            geoJSONFeature['type'] = "Feature"
+            geoJSONFeature['geometry'] = {
+                "type": "Point",
+                "coordinates": [item[5], item[6]]
+            }
+            geoJson.features.push(geoJSONFeature)
         })
         console.log(geoJson)
     })
