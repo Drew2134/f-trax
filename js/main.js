@@ -35,14 +35,14 @@ require([
     
     aptsLayer.queryFeatures(allApts).then((featureSet) => {
         const features = featureSet.features;
-    })
 
-    const rnwyGeoJSON = "data/runways.geojson";
-    const rnwyLayer = new GeoJSONLayer({
-        url: rnwyGeoJSON,
-        copyright: "U.S. DOT",
-        definitionExpression: "Loc_Id = " + loc_ids
-    });
+        const rnwyGeoJSON = "data/runways.geojson";
+        const rnwyLayer = new GeoJSONLayer({
+            url: rnwyGeoJSON,
+            copyright: "U.S. DOT",
+            definitionExpression: "Loc_Id != ''"
+        });
+    })
 
     const map = new Map({
         basemap: "arcgis-topographic",
