@@ -30,7 +30,8 @@ require([
     //Stylize the airports with ESRI Airport Icon
     let aptSymbol = {
         type: "web-style",
-        styleName: "EsriIconsStyle"
+        styleName: "EsriIconsStyle",
+        name: "Airport"
     };
     aptsLayer.renderer = {
         type: "simple",
