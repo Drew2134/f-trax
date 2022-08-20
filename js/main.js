@@ -197,6 +197,12 @@ require([
             }
             geoJson.features.push(geoJSONFeature)
         })
-        console.log(geoJson)
+        
+        const flightsLayer = new GeoJSONLayer({
+            url: geoJson,
+            copyright: "The OpenSky Network, https://opensky-network.org",
+        });
+        
+        map.add(flightsLayer)
     })
 });
