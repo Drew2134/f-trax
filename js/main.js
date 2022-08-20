@@ -182,8 +182,22 @@ require([
     CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
 
     function callAPI() {
-        let user = "andrew_winchell";
-        let pass = "ColtEverett2301!";
+
+        $.ajax({
+            url: "https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226",
+            type: "GET",
+            dataType: "json",
+            success: function() { alert('hello') },
+            error: function() { alert('error') },
+            beforeSend: authenticate
+        });
+
+        function authenticate(xhr) {
+            xhr.setRequestHeader('username', 'andrew_winchell');
+            xhr.setRequestHeader('password', 'ColtEverett2301!');
+        }
+
+        /*
         $.getJSON("https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226", function(jsonData){
             var geoJson = {
                 "type": "FeatureCollection",
@@ -270,7 +284,7 @@ require([
             
             map.add(flightsLayer)
         })
-        setTimeout(callAPI, 60000);
+        setTimeout(callAPI, 60000);*/
     };
     callAPI();
 });
