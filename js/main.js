@@ -34,7 +34,7 @@ require([
             "Responsible_Artcc_Name",
             "Responsible_Artcc_Comp_Id"
         ],
-        definitionExpression: "Fac_Type = 'AIRPORT' AND Fac_Use = 'PU' AND State_Name != ''"
+        definitionExpression: "Fac_Type = 'AIRPORT' AND Fac_Use = 'PU' AND State_Name IS NOT NULL"
     });
 
     const aptTemplate = {
