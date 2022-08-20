@@ -20,14 +20,16 @@ require([
 
     esriConfig.apiKey = "AAPKb765a73f61db40b189cd2ec292a872aaUGEazH9qCAdMNXi_0IzSi0RV3jKMpqezs6gUtr8xIRhZTPMnXU8AbU5t3L-WxZFQ";
     
+    const aptsJSON = "data/airports.geojson";
+
     // create a new blob from geojson featurecollection
-    const blob = new Blob([JSON.stringify(geojson)], {
+    const aptsBlob = new Blob([JSON.stringify(aptsJSON)], {
         type: "application/json"
     });
-    const url = URL.createObjectURL(blob);
+    const aptsUrl = URL.createObjectURL(aptsBlob);
 
     const aptsLayer = new GeoJSONLayer({
-        url: url,
+        url: aptsUrl,
         copyright: "U.S. DOT",
         definitionExpression: "Fac_Type = 'Airport'"
     });
