@@ -29,11 +29,21 @@ require([
     
     //Stylize the airports with ESRI Airport Icon
     let aptSymbol = {
-        type: "web-style",
-        styleName: "EsriIconsStyle",
-        name: "Pushpin 1"
+        type: "point-3d",
+        symbolLayers: [{
+            type: "Icon",
+            size: 16,
+            anchor: "bottom",
+            material: {
+                color: [155, 200, 0],
+                transparency: 0
+            },
+            resource: {
+                "href":"https://static.arcgis.com/arcgis/styleItems/Icons/web/resource/Pushpin1.svg"
+            }
+        }]
     };
-    console.log(aptSymbol, aptSymbol.symbolLayers)
+    console.log(aptSymbol)
     aptsLayer.renderer = {
         type: "simple",
         symbol: aptSymbol
