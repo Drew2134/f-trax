@@ -20,7 +20,7 @@ require([
 
     esriConfig.apiKey = "AAPKb765a73f61db40b189cd2ec292a872aaUGEazH9qCAdMNXi_0IzSi0RV3jKMpqezs6gUtr8xIRhZTPMnXU8AbU5t3L-WxZFQ";
     
-    const aptsJSON = "..data/airports.geojson";
+    const aptsJSON = "data/airports.geojson";
 
     // create a new blob from geojson featurecollection
     const aptsBlob = new Blob([JSON.stringify(aptsJSON)], {
