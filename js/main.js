@@ -34,7 +34,7 @@ require([
             "Responsible_Artcc_Name",
             "Responsible_Artcc_Comp_Id"
         ],
-        definitionExpression: "Fac_Type = 'AIRPORT' AND Fac_Use = 'PU'"
+        definitionExpression: "Fac_Type = 'AIRPORT' AND Fac_Use = 'PU' AND State_Name != ''"
     });
 
     const aptTemplate = {
@@ -43,6 +43,14 @@ require([
             {
                 type: "fields",
                 fieldInfos: [
+                    {
+                        fieldName: "Fac_Name",
+                        label: "Airport"
+                    },
+                    {
+                        fieldName: "Loc_Id",
+                        label: "Location Id"
+                    },
                     {
                         fieldName: "City",
                         label: "City"
