@@ -25,7 +25,7 @@ require([
     const aptsLayer = new GeoJSONLayer({
         url: aptsJSON,
         copyright: "U.S. DOT",
-        definitionExpression: "Fac_Type = 'Airport'"
+        definitionExpression: "Fac_Type = 'AIRPORT'"
     });
 
     const map = new Map({
