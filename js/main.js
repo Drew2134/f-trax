@@ -24,7 +24,7 @@ require([
     const aptLayer = new GeoJSONLayer({
         url: aptGeoJSON,
         copyright: "U.S. DOT",
-        minScale: 2500000,
+        minScale: 2750000,
         outFields: [
             "Fac_Name",
             "Loc_Id",
@@ -110,8 +110,20 @@ require([
     const rnwyLayer = new GeoJSONLayer({
         url: rnwyGeoJSON,
         copyright: "U.S. DOT",
-        minScale: 500000
+        minScale: 250000
     });
+
+    let rnwySymbol = {
+        type: "simple-line",
+        color: "gray",
+        width: "3px",
+        style: "solid"
+    };
+
+    rnwyLayer.renderer = {
+        type: "simple",
+        symbol: rnwySymbol
+    };
 
     const map = new Map({
         basemap: "arcgis-topographic",
