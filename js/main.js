@@ -251,10 +251,10 @@ require([
             };
 
             //Render airports with custom style
-            //flightsLayer.renderer = {
-            //    type: "simple",
-            //    symbol: planeSymbol
-            //}
+            flightsLayer.renderer = {
+                type: "simple",
+                symbol: planeSymbol
+            }
             
             map.add(flightsLayer)
         })
