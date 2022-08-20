@@ -189,7 +189,7 @@ require([
             password: "ColtEverett2301!",
             type: "GET",
             dataType: "json",
-            success: function(data) { console.log(data) },
+            success: function() { console.log("fix") },
             error: function() { alert('error') }
         });
 
