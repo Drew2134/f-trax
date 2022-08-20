@@ -150,7 +150,8 @@ require([
     // Search - add to navbar
     var searchWidget = new Search({
         container: "searchWidgetDiv",
-        view: scene
+        view: scene,
+        sources: [aptLayer]
     });
     CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
 
