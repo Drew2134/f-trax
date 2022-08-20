@@ -152,7 +152,13 @@ require([
     const homeButton = new Home({
         view: scene
     });
-    scene.ui.add(homeButton, "top-left");
+    scene.ui.add(
+        {
+            component: homeButton,
+            position: "top-left",
+            index: 0
+        }
+    );
 
 
     //Search Widget - add to navbar
