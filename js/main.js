@@ -22,14 +22,8 @@ require([
     
     const aptsJSON = "data/airports.geojson";
 
-    // create a new blob from geojson featurecollection
-    const aptsBlob = new Blob([JSON.stringify(aptsJSON)], {
-        type: "application/json"
-    });
-    const aptsUrl = URL.createObjectURL(aptsBlob);
-
     const aptsLayer = new GeoJSONLayer({
-        url: aptsUrl,
+        url: aptsJSON,
         copyright: "U.S. DOT",
         definitionExpression: "Fac_Type = 'Airport'"
     });
