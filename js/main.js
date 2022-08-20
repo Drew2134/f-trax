@@ -27,22 +27,12 @@ require([
         definitionExpression: "Fac_Type = 'AIRPORT' AND Fac_Use = 'PU'"
     });
 
-    const allApts = aptsLayer.createQuery();
-    allApts.set({
-        where: "1=1",
-        returnGeometry: false
-    })
-    
-    aptsLayer.queryFeatures(allApts).then((featureSet) => {
-        const features = featureSet.features;
-
-        const rnwyGeoJSON = "data/runways.geojson";
-        const rnwyLayer = new GeoJSONLayer({
-            url: rnwyGeoJSON,
-            copyright: "U.S. DOT",
-            definitionExpression: "Loc_Id != ''"
-        });
-    })
+    const rnwyGeoJSON = "data/runways.geojson";
+    const rnwyLayer = new GeoJSONLayer({
+        url: rnwyGeoJSON,
+        copyright: "U.S. DOT",
+        definitionExpression: "Loc_Id != ''"
+    });
 
     const map = new Map({
         basemap: "arcgis-topographic",
