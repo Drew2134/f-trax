@@ -181,35 +181,39 @@ require([
     });
     CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
 
-    $.getJSON("https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226", function(jsonData){
-        var geoJson = {
-            "type": "FeatureCollection",
-            "name": "Active Flights",
-            "features": []
-        };
+    function callAPI() {
+        $.getJSON("https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226", function(jsonData){
+            var geoJson = {
+                "type": "FeatureCollection",
+                "name": "Active Flights",
+                "features": []
+            };
 
-        jsonData.states.forEach((item) => {
-            let geoJSONFeature = {}
-            geoJSONFeature['properties'] = item
-            geoJSONFeature['type'] = "Feature"
-            geoJSONFeature['geometry'] = {
-                "type": "Point",
-                "coordinates": [item[5], item[6]]
-            }
-            geoJson.features.push(geoJSONFeature)
-        });
+            jsonData.states.forEach((item) => {
+                let geoJSONFeature = {}
+                geoJSONFeature['properties'] = item
+                geoJSONFeature['type'] = "Feature"
+                geoJSONFeature['geometry'] = {
+                    "type": "Point",
+                    "coordinates": [item[5], item[6]]
+                }
+                geoJson.features.push(geoJSONFeature)
+            });
 
-        const blob = new Blob([JSON.stringify(geoJson)], {
-            type: "application/json"
-        });
+            const blob = new Blob([JSON.stringify(geoJson)], {
+                type: "application/json"
+            });
 
-        const url = URL.createObjectURL(blob);
-        
-        const flightsLayer = new GeoJSONLayer({
-            url: url,
-            copyright: "The OpenSky Network, https://opensky-network.org",
-        });
-        
-        map.add(flightsLayer)
-    })
+            const url = URL.createObjectURL(blob);
+            
+            const flightsLayer = new GeoJSONLayer({
+                url: url,
+                copyright: "The OpenSky Network, https://opensky-network.org",
+            });
+            
+            map.add(flightsLayer)
+        })
+        setTimeout(callAPI, 30000);
+    };
+    callAPI();
 });
