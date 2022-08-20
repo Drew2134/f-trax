@@ -182,7 +182,7 @@ require([
     CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
 
     function callAPI() {
-        $.getJSON("https://opensky-network.org/api/states/all?username=andrew_winchell&password=ColtEverett2301!&lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226", {username: "andrew_winchell", password: "ColtEverett2301!"}, function(jsonData){
+        $.getJSON("https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226", {username: "andrew_winchell", password: "ColtEverett2301!"}, function(jsonData){
             var geoJson = {
                 "type": "FeatureCollection",
                 "name": "Active Flights",
