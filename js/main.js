@@ -6,6 +6,7 @@ require([
     "esri/views/SceneView",
 
     //Widgets
+    "esri/widgets/Home",
     "esri/widgets/Search",
 
     //Bootstrap
@@ -19,7 +20,7 @@ require([
     "calcite-maps/calcitemaps-arcgis-support-v0.10",
 
     "dojo/domReady!"
-], function(esriConfig, Map, GeoJSONLayer, SceneView, Search, Collapse, Dropdown, CalciteMaps, CalciteMapArcGISSupport){
+], function(esriConfig, Map, GeoJSONLayer, SceneView, Home, Search, Collapse, Dropdown, CalciteMaps, CalciteMapArcGISSupport){
 
     esriConfig.apiKey = "AAPKb765a73f61db40b189cd2ec292a872aaUGEazH9qCAdMNXi_0IzSi0RV3jKMpqezs6gUtr8xIRhZTPMnXU8AbU5t3L-WxZFQ";
 
@@ -147,8 +148,15 @@ require([
         }
     });
 
-    // Search - add to navbar
-    var searchWidget = new Search({
+    //Home Widget - add to top-left map container
+    const homeButton = new Home({
+        view: scene
+    });
+    scene.ui.add(homeButton, "top-left");
+
+
+    //Search Widget - add to navbar
+    const searchWidget = new Search({
         container: "searchWidgetDiv",
         view: scene,
         includeDefaultSources: false,
