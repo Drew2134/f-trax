@@ -151,6 +151,7 @@ require([
     var searchWidget = new Search({
         container: "searchWidgetDiv",
         view: scene,
+        includeDefaultSources: false,
         sources: [
             {
                 layer: aptLayer,
