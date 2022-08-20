@@ -192,6 +192,11 @@ require([
             jsonData.states.forEach((item) => {
                 console.log(item, item[1])
                 let geoJSONFeature = {}
+                geoJSONFeature['type'] = "Feature"
+                geoJSONFeature['geometry'] = {
+                    "type": "Point",
+                    "coordinates": [item[5], item[6], item[13]]
+                }
                 console.log(geoJSONFeature, geoJSONFeature.properties)
                 geoJSONFeature.properties.callsign = item[1]
                 geoJSONFeature.properties.origin_country = item[2]
@@ -203,11 +208,6 @@ require([
                 geoJSONFeature.properties.vertical_rate = item[11]
                 geoJSONFeature.properties.geo_altitude = item[13]
                 geoJSONFeature.properties.category = item[17]
-                geoJSONFeature['type'] = "Feature"
-                geoJSONFeature['geometry'] = {
-                    "type": "Point",
-                    "coordinates": [item[5], item[6], item[13]]
-                }
                 geoJson.features.push(geoJSONFeature)
             });
 
