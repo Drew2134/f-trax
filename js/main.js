@@ -192,6 +192,7 @@ require([
             jsonData.states.forEach((item) => {
                 console.log(item, item[1])
                 let geoJSONFeature = {}
+                console.log(geoJSONFeature, geoJSONFeature.properties)
                 geoJSONFeature.properties.callsign = item[1]
                 geoJSONFeature.properties.origin_country = item[2]
                 geoJSONFeature.properties.longitude = item[5]
