@@ -193,7 +193,7 @@ require([
         });
 
         function authenticate(xhr) {
-            var base64 = Base64.encode("andrew_winchell:ColtEverett2301!")
+            var base64 = "andrew_winchell:ColtEverett2301!"
             xhr.setRequestHeader('Authorization', 'Basic ' + base64);
         }
 
