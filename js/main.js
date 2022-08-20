@@ -181,8 +181,4 @@ require([
     });
     CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
 
-    scene.when(() => {
-        CalciteMapArcGISSupport.setPopupPanelSync(scene);
-    });
-
 });
