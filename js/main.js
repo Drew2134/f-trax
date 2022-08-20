@@ -212,6 +212,14 @@ require([
                 field: "17",
                 uniqueValueInfos: [
                     {
+                        value: 0,
+                        symbol: {
+                            type: "web-style",
+                            name: "Airplane_Small_Passenger",
+                            styleName: "EsriRealisticTransportationStyle"
+                        }
+                    },
+                    {
                         value: 2,
                         symbol: {
                             type: "web-style",
