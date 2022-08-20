@@ -185,17 +185,13 @@ require([
 
         $.ajax({
             url: "https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226",
+            username: "andrew_winchell",
+            password: "ColtEverett2301!",
             type: "GET",
             dataType: "json",
             success: function(data) { console.log(data) },
-            error: function() { alert('error') },
-            beforeSend: authenticate
+            error: function() { alert('error') }
         });
-
-        function authenticate(xhr) {
-            var base64 = "andrew_winchell:ColtEverett2301!"
-            xhr.setRequestHeader('Authorization', 'Bearer ' + base64);
-        }
 
         /*
         $.getJSON("https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226", function(jsonData){
