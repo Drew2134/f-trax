@@ -23,13 +23,6 @@ require([
 
     esriConfig.apiKey = "AAPKb765a73f61db40b189cd2ec292a872aaUGEazH9qCAdMNXi_0IzSi0RV3jKMpqezs6gUtr8xIRhZTPMnXU8AbU5t3L-WxZFQ";
 
-    // Search - add to navbar
-    var searchWidget = new Search({
-        container: "searchWidgetDiv",
-        view: scene
-    });
-    CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
-
     const aptGeoJSON = "data/airports.geojson";
     const aptLayer = new GeoJSONLayer({
         url: aptGeoJSON,
@@ -153,6 +146,13 @@ require([
             tilt: 35
         }
     });
+
+    // Search - add to navbar
+    var searchWidget = new Search({
+        container: "searchWidgetDiv",
+        view: scene
+    });
+    CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
 
     scene.when(() => {
         CalciteMapArcGISSupport.setPopupPanelSync(scene);
