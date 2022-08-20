@@ -151,7 +151,17 @@ require([
     var searchWidget = new Search({
         container: "searchWidgetDiv",
         view: scene,
-        sources: [aptLayer]
+        sources: [
+            {
+                layer: aptLayer,
+                searchFields: ["Loc_Id", "Fac_Name"],
+                displayField: "Fac_Name",
+                exactMatch: false,
+                outFields: ["*"],
+                name: "Airports",
+                placeholder: "example: MKE"
+            }
+        ]
     });
     CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
 
