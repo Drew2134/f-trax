@@ -24,6 +24,7 @@ require([
     const aptLayer = new GeoJSONLayer({
         url: aptGeoJSON,
         copyright: "U.S. DOT",
+        minScale: 2500000,
         outFields: [
             "Fac_Name",
             "Loc_Id",
@@ -38,7 +39,7 @@ require([
     });
 
     const aptTemplate = {
-        title: "{Fac_Name} Airport - {Loc_Id}",
+        title: "{Fac_Name} AIRPORT - {Loc_Id}",
         content: [
             {
                 type: "fields",
@@ -108,7 +109,8 @@ require([
     const rnwyGeoJSON = "data/runways.geojson";
     const rnwyLayer = new GeoJSONLayer({
         url: rnwyGeoJSON,
-        copyright: "U.S. DOT"
+        copyright: "U.S. DOT",
+        minScale: 500000
     });
 
     const map = new Map({
