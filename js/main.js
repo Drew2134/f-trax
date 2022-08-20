@@ -30,8 +30,7 @@ require([
     const rnwyGeoJSON = "data/runways.geojson";
     const rnwyLayer = new GeoJSONLayer({
         url: rnwyGeoJSON,
-        copyright: "U.S. DOT",
-        definitionExpression: "Loc_Id != ''"
+        copyright: "U.S. DOT"
     });
 
     const map = new Map({
