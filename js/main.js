@@ -194,8 +194,7 @@ require([
 
         function authenticate(xhr) {
             console.log("test")
-            xhr.setRequestHeader('user', 'andrew_winchell');
-            xhr.setRequestHeader('pass', 'ColtEverett2301!');
+            xhr.setRequestHeader('auth', 'andrew_winchell:ColtEverett2301!');
         }
 
         /*
