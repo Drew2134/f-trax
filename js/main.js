@@ -184,7 +184,7 @@ require([
     function callAPI() {
 
         $.ajax({
-            url: "https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226",
+            url: "https://opensky-network.org/api/states/all",
             username: "andrew_winchell",
             password: "ColtEverett2301!",
             type: "GET",
