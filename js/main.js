@@ -19,18 +19,19 @@ require([
 ], function(esriConfig, Map, GeoJSONLayer, SceneView, Collapse, Dropdown, CalciteMaps, CalciteMapArcGISSupport){
 
     esriConfig.apiKey = "AAPKb765a73f61db40b189cd2ec292a872aaUGEazH9qCAdMNXi_0IzSi0RV3jKMpqezs6gUtr8xIRhZTPMnXU8AbU5t3L-WxZFQ";
-    
-    let aptSymbol = {
-        type: "web-style",
-        styleName: "EsriThematicShapesStyle",
-        name: "Airport"
-    };
+
     const aptsGeoJSON = "data/airports.geojson";
     const aptsLayer = new GeoJSONLayer({
         url: aptsGeoJSON,
         copyright: "U.S. DOT",
         definitionExpression: "Fac_Type = 'AIRPORT' AND Fac_Use = 'PU'"
-    });
+    }); 
+    
+    //Stylize the airports with ESRI Airport Icon
+    let aptSymbol = {
+        type: "web-style",
+        styleName: "EsriIconsStyle"
+    };
     aptsLayer.renderer = {
         type: "simple",
         symbol: aptSymbol
