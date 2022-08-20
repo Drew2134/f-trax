@@ -24,7 +24,12 @@ require([
     const aptsLayer = new GeoJSONLayer({
         url: aptsGeoJSON,
         copyright: "U.S. DOT",
-        definitionExpression: "Fac_Type = 'AIRPORT' AND Fac_Use = 'PU'"
+        definitionExpression: "Fac_Type = 'AIRPORT' AND Fac_Use = 'PU'",
+        fields: [{
+            name: "OBJECTID",
+            alias: "Object ID",
+            type: "oid"
+        }]
     }); 
     
     //Stylize the airports with ESRI Airport Icon
@@ -43,7 +48,8 @@ require([
             }
         }]
     };
-    console.log(aptSymbol)
+    
+    //Render airports with custom style
     aptsLayer.renderer = {
         type: "simple",
         symbol: aptSymbol
