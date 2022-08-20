@@ -208,6 +208,7 @@ require([
             
             const flightsLayer = new GeoJSONLayer({
                 url: url,
+                hasZ: true,
                 copyright: "The OpenSky Network, https://opensky-network.org",
             });
 
