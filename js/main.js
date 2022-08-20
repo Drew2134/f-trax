@@ -190,7 +190,7 @@ require([
             type: "GET",
             dataType: "json",
             success: function() { console.log("fix") },
-            error: function(data) { alert(data) }
+            error: function(data) { console.log(data) }
         });
 
         /*
