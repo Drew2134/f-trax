@@ -195,7 +195,7 @@ require([
                 geoJSONFeature['type'] = "Feature"
                 geoJSONFeature['geometry'] = {
                     "type": "Point",
-                    "coordinates": [item[5], item[6]]
+                    "coordinates": [item[5], item[6], item[13]]
                 }
                 geoJson.features.push(geoJSONFeature)
             });
