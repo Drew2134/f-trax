@@ -209,7 +209,7 @@ require([
             //Stylize the airports with ESRI Airport Icon
             let planeSymbol = {
                 type: "unique-value",
-                field: "17",
+                field: 17,
                 uniqueValueInfos: [
                     {
                         value: 0,
