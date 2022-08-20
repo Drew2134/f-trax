@@ -205,12 +205,6 @@ require([
             });
 
             const url = URL.createObjectURL(blob);
-            
-            const flightsLayer = new GeoJSONLayer({
-                url: url,
-                hasZ: true,
-                copyright: "The OpenSky Network, https://opensky-network.org",
-            });
 
             //Stylize the airports with ESRI Airport Icon
             let planeSymbol = {
@@ -250,11 +244,12 @@ require([
                 ]
             };
 
-            //Render airports with custom style
-            flightsLayer.renderer = {
-                type: "simple",
-                symbol: planeSymbol
-            }
+            const flightsLayer = new GeoJSONLayer({
+                url: url,
+                hasZ: true,
+                renderer: planeSymbol,
+                copyright: "The OpenSky Network, https://opensky-network.org",
+            });
             
             map.add(flightsLayer)
         })
