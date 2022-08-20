@@ -35,7 +35,7 @@ require([
             size: 16,
             anchor: "bottom",
             material: {
-                color: [155, 200, 0],
+                color: [30, 144, 255],
                 transparency: 0
             },
             resource: {
