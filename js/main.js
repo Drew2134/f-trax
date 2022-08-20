@@ -47,7 +47,7 @@ require([
     const map = new Map({
         basemap: "arcgis-topographic",
         ground: "world-elevation",
-        layers: [aptsLayer]
+        layers: [aptsLayer, rnwyLayer]
     });
 
     const scene = new SceneView({
