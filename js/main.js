@@ -31,8 +31,9 @@ require([
     let aptSymbol = {
         type: "web-style",
         styleName: "EsriIconsStyle",
-        name: "Airport"
+        name: "Pushpin 1"
     };
+    aptSymbol.color = "dodgerblue";
     aptsLayer.renderer = {
         type: "simple",
         symbol: aptSymbol
