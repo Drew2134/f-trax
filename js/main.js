@@ -270,7 +270,7 @@ require([
             
             map.add(flightsLayer)
         })
-        setTimeout(callAPI, 30000);
+        setTimeout(callAPI, 60000);
     };
     callAPI();
 });
