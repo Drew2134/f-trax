@@ -5,6 +5,9 @@ require([
     "esri/layers/GeoJSONLayer",
     "esri/views/SceneView",
 
+    //Widgets
+    "esri/widgets/Search",
+
     //Bootstrap
     "bootstrap/Collapse",
     "bootstrap/Dropdown",
@@ -16,9 +19,16 @@ require([
     "calcite-maps/calcitemaps-arcgis-support-v0.10",
 
     "dojo/domReady!"
-], function(esriConfig, Map, GeoJSONLayer, SceneView, Collapse, Dropdown, CalciteMaps, CalciteMapArcGISSupport){
+], function(esriConfig, Map, GeoJSONLayer, SceneView, Search, Collapse, Dropdown, CalciteMaps, CalciteMapArcGISSupport){
 
     esriConfig.apiKey = "AAPKb765a73f61db40b189cd2ec292a872aaUGEazH9qCAdMNXi_0IzSi0RV3jKMpqezs6gUtr8xIRhZTPMnXU8AbU5t3L-WxZFQ";
+
+    // Search - add to navbar
+    var searchWidget = new Search({
+        container: "searchWidgetDiv",
+        view: scene
+    });
+    CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
 
     const aptGeoJSON = "data/airports.geojson";
     const aptLayer = new GeoJSONLayer({
