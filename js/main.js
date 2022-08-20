@@ -187,7 +187,7 @@ require([
         flightsGeoJSON['type'] = "Feature"
         flightsGeoJSON['geometry'] = {
             "type": "Point",
-            "coordinates": [jsonData['5'], jsonData['6']]
+            "coordinates": [jsonData[5], jsonData[6]]
         }
         console.log(flightsGeoJSON)
     })
