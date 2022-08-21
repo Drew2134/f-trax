@@ -187,7 +187,7 @@ require([
     CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
 
     searchWidget.on("search-complete", (e) => {
-        console.log(e.results[0])
+        console.log(e.results[0].results[0].target.attributes.Icao_Identifier)
     })
 
     function callAPI() {
