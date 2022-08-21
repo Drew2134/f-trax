@@ -425,4 +425,5 @@ require([
         setTimeout(callAPI, 600000);
     };
     callAPI();
+    console.log(map.layers)
 });
