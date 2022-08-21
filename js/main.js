@@ -193,7 +193,7 @@ require([
         let icao = e.results[0].results[0].target.attributes.Icao_Identifier;
         let weekStart = getMonday();
         let current = Math.floor(Date.now() / 1000);
-        let url = "https://opensky-network.org/api/flights/arrival?airport=" + icao + "begin=" + weekStart + "end=" + current
+        let url = "https://opensky-network.org/api/flights/arrival?airport=" + icao + "&begin=" + weekStart + "&end=" + current
 
         $.ajax({
             url: url,
