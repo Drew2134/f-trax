@@ -253,15 +253,15 @@ require([
                     defaultSymbol: smallPlane,
                     uniqueValueInfos: [
                         {
-                            value: "2",
+                            value: 2,
                             symbol: privatePlane
                         },
                         {
-                            value: "3",
+                            value: 3,
                             symbol: smallPlane
                         },
                         {
-                            value: "4",
+                            value: 4,
                             symbol: largePlane
                         }
                     ],
