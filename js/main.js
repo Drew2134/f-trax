@@ -148,7 +148,7 @@ require([
             tilt: 35
         }
     });
-    console.log(scene.scale, $view.scale, scene.zoomScale)
+    console.log(scene.scale, scene.zoomScale)
 
     //Home Widget - add to top-left map container
     const homeButton = new Home({
