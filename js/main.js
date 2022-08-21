@@ -236,6 +236,11 @@ require([
                 let planeSymbol = {
                     type: "unique-value",
                     field: "category",
+                    defaultSymbol: {
+                        type: "web-style",
+                        name: "Airplane_Small_Passenger",
+                        styleName: "EsriRealisticTransportationStyle"
+                    },
                     uniqueValueInfos: [
                         {
                             value: 0,
