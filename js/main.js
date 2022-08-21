@@ -221,7 +221,6 @@ require([
                         "geo_altitude": item[13],
                         "category": item[16]
                     }
-                    console.log(geoJSONFeature, geoJSONFeature.properties)
                     geoJson.features.push(geoJSONFeature)
                 });
 
@@ -245,8 +244,7 @@ require([
                     label: "generic place", 
                     visualVariables: [{
                         type: "rotation",
-                        field: "true_track",
-                        rotationType: "geographic"
+                        field: "true_track"
                     }]
                         
                         
