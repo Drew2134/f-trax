@@ -14,7 +14,7 @@
         <!--Calcite Maps Bootstrap-->
         <link rel="stylesheet" type="text/css" href="https://esri.github.io/calcite-maps/dist/css/calcite-maps-bootstrap.min-v0.10.css" />
         
-        <!-- Calcite Maps -->
+        <!--Calcite Maps-->
         <link rel="stylesheet" href="https://esri.github.io/calcite-maps/dist/css/calcite-maps-arcgis-4.x.min-v0.10.css">
 
         <!--[if IE<9]
@@ -25,7 +25,7 @@
     <body class="calcite-maps calcite-nav-top">
         <!--Start Navbar-->
         <nav class="navbar calcite-navbar navbar-fixed-top calcite-text-light calcite-bg-dark">
-            <!-- Menu -->
+            <!--Data Sources-->
             <div class="dropdown calcite-dropdown calcite-text-dark calcite-bg-light" role="presentation">
                 <a class="dropdown-toggle" role="menubutton" aria-haspopup="true" aria-expanded="false" tabindex="0">
                     <div class="calcite-dropdown-toggle">
@@ -63,13 +63,13 @@
                     </li>
                 </ul>
             </div>
-            <!-- Title -->
+            <!--Title-->
             <div class="calcite-title calcite-overflow-hidden">
                 <span class="calcite-title-main">F-TRAX</span>
                 <span class="calcite-title-divider hidden-xs"></span>
                 <span class="calcite-title-sub hidden-xs">Flight Tracking and Airport Planning</span>
             </div>
-            <!-- Nav -->
+            <!--Search-->
             <ul class="nav navbar-nav calcite-nav">
                 <li>
                     <div class="calcite-navbar-search calcite-search-expander">
@@ -85,6 +85,13 @@
             <div id="viewDiv"></div>
         </div>
         <!--End Map-->
+
+        <!--Start Infographics-->
+        <div class="stats">
+            <div class="infographic" id="arrivals"></div>
+            <div class="infographic" id="departures"></div>
+        </div>
+        <!--End Infographics-->
 
         <script type="text/javascript">
             var dojoConfig = {
