@@ -27,6 +27,7 @@ require([
 
     const aptGeoJSON = "data/airports.geojson";
     const aptLayer = new GeoJSONLayer({
+        id: "airports",
         url: aptGeoJSON,
         copyright: "U.S. DOT",
         minScale: 2750000,
@@ -117,6 +118,7 @@ require([
 
     const rnwyGeoJSON = "data/runways.geojson";
     const rnwyLayer = new GeoJSONLayer({
+        id: "runways",
         url: rnwyGeoJSON,
         copyright: "U.S. DOT",
         minScale: 250000
@@ -249,8 +251,8 @@ require([
     };
 
     function callAPI() {
-        if(map.layers){
-            console.log(map.layers);
+        if(map.findLayerById("flights")){
+            console.log("found");
         }
 
         let username = "andrew_winchell";
@@ -360,6 +362,7 @@ require([
                 };
 
                 const flightsLayer = new GeoJSONLayer({
+                    id: "flights",
                     url: url,
                     hasZ: true,
                     renderer: planeRenderer,
