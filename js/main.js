@@ -58,6 +58,10 @@ require([
                         label: "Location Id"
                     },
                     {
+                        fieldName: "Icao_Identifier",
+                        label: "Icao Identifier"
+                    },
+                    {
                         fieldName: "City",
                         label: "City"
                     },
