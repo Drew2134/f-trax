@@ -264,13 +264,19 @@ require([
                             value: 4,
                             symbol: largePlane
                         }
-                    ]/*,
+                    ],
                     visualVariables: [
                         {
                             type: "rotation",
                             field: "true_track"
+                        },
+                        {
+                            type: "size",
+                            field: "category",
+                            minSize: 20,
+                            maxSize: 20
                         }
-                    ]*/
+                    ]
                 };
 
                 const flightsLayer = new GeoJSONLayer({
