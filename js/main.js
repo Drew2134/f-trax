@@ -192,7 +192,7 @@ require([
         let base64 = btoa(username + ":" + password);
         let icao = e.results[0].results[0].target.attributes.Icao_Identifier;
         let weekStart = getMonday();
-        let current = Date.now * 1000;
+        let current = Math.floor(Date.now() / 1000);
         let url = "https://opensky-network.org/api/flights/arrival?airport=" + icao + "begin=" + weekStart + "end=" + current
 
         $.ajax({
@@ -217,7 +217,7 @@ require([
         date = new Date();
         var day = date.getDay(),
             diff = date.getDate() - day + (day == 0 ? -6:1);
-        return new Date(date.setDate(diff));
+        return Math.floor(new Date(date.setDate(diff)).getTime() / 1000);
     };
 
     function callAPI() {
