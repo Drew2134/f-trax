@@ -203,7 +203,6 @@ require([
                 };
 
                 jsonData.states.forEach((item) => {
-                    console.log(item, item[1])
                     let geoJSONFeature = {}
                     geoJSONFeature["type"] = "Feature"
                     geoJSONFeature["geometry"] = {
