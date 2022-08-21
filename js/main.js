@@ -334,12 +334,14 @@ require([
                     visualVariables: [
                         {
                             type: "rotation",
-                            field: "true_track"
+                            field: "true_track",
+                            axis: "heading",
+                            rotationType: "geographic"
                         },
                         {
                             type: "rotation",
-                            axis: "tilt",
-                            valueExpression: "$feature.verticle_rate * 10"
+                            field: "verticle_rate",
+                            axis: "tilt"
                         },
                         {
                             type: "size",
