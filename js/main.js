@@ -195,97 +195,95 @@ require([
             headers: {
                 "Authorization": "Basic " + base64
             },
-            success: function(data) { console.log(data) }
-        });
+            success: (jsonData) => {
+                var geoJson = {
+                    "type": "FeatureCollection",
+                    "name": "Active Flights",
+                    "features": []
+                };
 
-        /*
-        $.getJSON("https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226", function(jsonData){
-            var geoJson = {
-                "type": "FeatureCollection",
-                "name": "Active Flights",
-                "features": []
-            };
-
-            jsonData.states.forEach((item) => {
-                console.log(item, item[1])
-                let geoJSONFeature = {}
-                geoJSONFeature['type'] = "Feature"
-                geoJSONFeature['geometry'] = {
-                    "type": "Point",
-                    "coordinates": [item[5], item[6], item[13]]
-                }
-                geoJSONFeature['properties'] = {
-                    "callsign": item[1],
-                    "origin_country": item[2],
-                    "longitude": item[5],
-                    "latitude": item[6],
-                    "on_ground": item[8],
-                    "velocity": item[9],
-                    "true_track": item[10],
-                    "vertical_rate": item[11],
-                    "geo_altitude": item[13],
-                    "category": item[17]
-                }
-                console.log(geoJSONFeature, geoJSONFeature.properties)
-                geoJson.features.push(geoJSONFeature)
-            });
-
-            const blob = new Blob([JSON.stringify(geoJson)], {
-                type: "application/json"
-            });
-
-            const url = URL.createObjectURL(blob);
-
-            //Stylize the airports with ESRI Airport Icon
-            let planeSymbol = {
-                type: "unique-value",
-                field: "category",
-                uniqueValueInfos: [
-                    {
-                        value: 0,
-                        symbol: {
-                            type: "web-style",
-                            name: "Airplane_Small_Passenger",
-                            styleName: "EsriRealisticTransportationStyle"
-                        }
-                    },
-                    {
-                        value: 2,
-                        symbol: {
-                            type: "web-style",
-                            name: "Airplane_Private",
-                            styleName: "EsriRealisticTransportationStyle"
-                        }
-                    },
-                    {
-                        value: 3,
-                        symbol: {
-                            type: "web-style",
-                            name: "Airplane_Small_Passenger",
-                            styleName: "EsriRealisticTransportationStyle"
-                        }
-                    },
-                    {
-                        value: 4,
-                        symbol: {
-                            type: "web-style",
-                            name: "Airplane_Large_Passenger",
-                            styleName: "EsriRealisticTransportationStyle"
-                        }
+                jsonData.states.forEach((item) => {
+                    console.log(item, item[1])
+                    let geoJSONFeature = {}
+                    geoJSONFeature["type"] = "Feature"
+                    geoJSONFeature["geometry"] = {
+                        "type": "Point",
+                        "coordinates": [item[5], item[6], item[13]]
                     }
-                ]
-            };
+                    geoJSONFeature["properties"] = {
+                        "callsign": item[1],
+                        "origin_country": item[2],
+                        "longitude": item[5],
+                        "latitude": item[6],
+                        "on_ground": item[8],
+                        "velocity": item[9],
+                        "true_track": item[10],
+                        "vertical_rate": item[11],
+                        "geo_altitude": item[13],
+                        "category": item[17]
+                    }
+                    console.log(geoJSONFeature, geoJSONFeature.properties)
+                    geoJson.features.push(geoJSONFeature)
+                });
 
-            const flightsLayer = new GeoJSONLayer({
-                url: url,
-                hasZ: true,
-                renderer: planeSymbol,
-                copyright: "The OpenSky Network, https://opensky-network.org",
-            });
-            
-            map.add(flightsLayer)
-        })
-        setTimeout(callAPI, 60000);*/
+                const blob = new Blob([JSON.stringify(geoJson)], {
+                    type: "application/json"
+                });
+
+                const url = URL.createObjectURL(blob);
+                
+                //Stylize the airports with ESRI Airport Icon
+                let planeSymbol = {
+                    type: "unique-value",
+                    field: "category",
+                    uniqueValueInfos: [
+                        {
+                            value: 0,
+                            symbol: {
+                                type: "web-style",
+                                name: "Airplane_Small_Passenger",
+                                styleName: "EsriRealisticTransportationStyle"
+                            }
+                        },
+                        {
+                            value: 2,
+                            symbol: {
+                                type: "web-style",
+                                name: "Airplane_Private",
+                                styleName: "EsriRealisticTransportationStyle"
+                            }
+                        },
+                        {
+                            value: 3,
+                            symbol: {
+                                type: "web-style",
+                                name: "Airplane_Small_Passenger",
+                                styleName: "EsriRealisticTransportationStyle"
+                            }
+                        },
+                        {
+                            value: 4,
+                            symbol: {
+                                type: "web-style",
+                                name: "Airplane_Large_Passenger",
+                                styleName: "EsriRealisticTransportationStyle"
+                            }
+                        }
+                    ]
+                };
+
+                const flightsLayer = new GeoJSONLayer({
+                    url: url,
+                    hasZ: true,
+                    renderer: planeSymbol,
+                    copyright: "The OpenSky Network, https://opensky-network.org",
+                });
+                
+                map.add(flightsLayer)
+
+                setTimeout(callAPI, 60000);
+            }
+        });
     };
     callAPI();
 });
