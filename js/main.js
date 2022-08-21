@@ -422,10 +422,10 @@ require([
                 flightsLayer.popupTemplate = flightsTemplate;
                 
                 if(map.findLayerById("flights")){
-                    map.remove(map.findLayerById("flights"));
+                    map.findLayerById("flights").refresh();
+                } else {
+                    map.add(flightsLayer)
                 };
-                
-                map.add(flightsLayer)
             }
         });
         setTimeout(callAPI, 12000);
