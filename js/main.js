@@ -239,7 +239,7 @@ require([
                     defaultSymbol: {
                         type: "web-style",
                         name: "Airplane_Small_Passenger",
-                        styleName: "EsriRealisticTransportationStyle"
+                        styleUrl: "https://static.arcgis.com/arcgis/styleItems/RealisticTransportation/web/Airplane_Small_Passenger.json"
                     },
                     uniqueValueInfos: [
                         {
