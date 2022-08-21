@@ -250,7 +250,7 @@ require([
                 const planeRenderer = {
                     type: "unique-value",
                     field: "category",
-                    defaultSymbol: smallPlane,
+                    //defaultSymbol: smallPlane,
                     uniqueValueInfos: [
                         {
                             value: 2,
@@ -272,7 +272,7 @@ require([
                         },
                         {
                             type: "size",
-                            valueExpression: "$scene.scale",
+                            valueExpression: "$view.scale",
                             stops: [
                                 {size: 5000, value: 500000000},
                                 {size: 3000, value: 50000000},
