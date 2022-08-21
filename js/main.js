@@ -274,18 +274,18 @@ require([
                     geoJSONFeature["type"] = "Feature"
                     geoJSONFeature["geometry"] = {
                         "type": "Point",
-                        "coordinates": [item[5], item[6], item[13]]
+                        "coordinates": [item[5], item[6], item[7]]
                     }
                     geoJSONFeature["properties"] = {
                         "callsign": item[1],
                         "origin_country": item[2],
                         "longitude": item[5],
                         "latitude": item[6],
+                        "baro_altitude": item[7],
                         "on_ground": item[8],
                         "velocity": item[9],
                         "true_track": item[10],
                         "vertical_rate": item[11],
-                        "geo_altitude": item[13],
                         "category": item[16]
                     }
                     geoJson.features.push(geoJSONFeature)
@@ -362,6 +362,55 @@ require([
                     },
                     copyright: "The OpenSky Network, https://opensky-network.org",
                 });
+
+                const flightsTemplate = {
+                    title: "Flight {callsign}",
+                    content: [
+                        {
+                            type: "fields",
+                            fieldInfos: [
+                                {
+                                    fieldName: "callsign",
+                                    label: "Callsign"
+                                },
+                                {
+                                    fieldName: "origin_country",
+                                    label: "Country of Origin"
+                                },
+                                {
+                                    fieldName: "longitude",
+                                    label: "Longitude"
+                                },
+                                {
+                                    fieldName: "latitude",
+                                    label: "Latitude"
+                                },
+                                {
+                                    fieldName: "velocity",
+                                    label: "velocity"
+                                },
+                                {
+                                    fieldName: "vertical_rate",
+                                    label: "Vertical Rate"
+                                },
+                                {
+                                    fieldName: "baro_altitude",
+                                    label: "Altitude"
+                                },
+                                {
+                                    fieldName: "true_track",
+                                    label: "Heading"
+                                },
+                                {
+                                    fieldName: "category",
+                                    label: "Aircraft Category"
+                                }
+                            ]
+                        }
+                    ]
+                };
+            
+                flightsLayer.popupTemplate = flightsTemplate;
                 
                 map.add(flightsLayer)
             }
