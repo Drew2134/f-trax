@@ -339,7 +339,7 @@ require([
                         {
                             type: "rotation",
                             axis: "tilt",
-                            field: "verticle_rate"
+                            valueExpression: "$feature.verticle_rate * 10"
                         },
                         {
                             type: "size",
