@@ -234,6 +234,19 @@ require([
                 let planeRenderer = {
                     type: "unique-value",
                     field: "category",
+                    defaultSymbol: {
+                        type: "point-3d",
+                        symbolLayers: [{
+                            "type": "Object",
+                            "width": 20,
+                            "height": 5,
+                            "depth": 22,
+                            "anchor": "origin",
+                            "resource": {
+                                "href": "https://static.arcgis.com/arcgis/styleItems/RealisticTransportation/web/resource/Airplane_Small_Passenger.json"
+                            }
+                        }]
+                    },
                     uniqueValueInfos: [
                         {
                             value: 0,
