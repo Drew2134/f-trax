@@ -143,12 +143,11 @@ require([
             position: {
                 x: -97,
                 y: 10,
-                z: 35000000
+                z: 3500000
             },
             tilt: 35
         }
     });
-    console.log(scene.scale, scene.zoomScale)
 
     //Home Widget - add to top-left map container
     const homeButton = new Home({
