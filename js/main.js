@@ -280,10 +280,9 @@ require([
                 });
                 
                 map.add(flightsLayer)
-
-                setTimeout(callAPI, 60000);
             }
         });
+        setTimeout(callAPI, 60000);
     };
     callAPI();
 });
