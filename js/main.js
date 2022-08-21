@@ -188,8 +188,10 @@ require([
             type: "GET",
             dataType: "json",
             async: false,
-            username: "andrew_winchell",
-            password: "ColtEverett2301!",
+            headers: {
+                "username": "andrew_winchell",
+                "password": "ColtEverett2301!"
+            },
             success: function(data) { console.log(data) }
         });
 
