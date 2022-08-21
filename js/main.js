@@ -272,7 +272,6 @@ require([
                         },
                         {
                             type: "size",
-                            field: "category",
                             minSize: 20,
                             maxSize: 20
                         }
