@@ -247,7 +247,7 @@ require([
                 });
 
                 //Stylize the airports with ESRI Airport Icon
-                let planeRenderer = {
+                const planeRenderer = {
                     type: "unique-value",
                     field: "category",
                     defaultSymbol: smallPlane,
