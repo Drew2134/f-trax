@@ -252,7 +252,7 @@ require([
 
     function callAPI() {
         if(map.findLayerById("flights")){
-            console.log("found");
+            map.remove("flights")
         }
 
         let username = "andrew_winchell";
@@ -428,7 +428,7 @@ require([
                 map.add(flightsLayer)
             }
         });
-        //setTimeout(callAPI, 12000);
+        setTimeout(callAPI, 12000);
     };
     callAPI();
 });
