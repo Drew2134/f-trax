@@ -272,9 +272,8 @@ require([
                         },*/
                         {
                             type: "size",
-                            minSize: 20,
-                            maxSize: 20,
-                            axis: "height"
+                            minSize: 200,
+                            maxSize: 200
                         }
                     ]
                 };
