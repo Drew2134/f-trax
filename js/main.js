@@ -272,7 +272,7 @@ require([
                         },
                         {
                             type: "size",
-                            valueExpression: "$view.scale",
+                            valueExpression: "$scene.scale",
                             stops: [
                                 {size: 5000, value: 500000000},
                                 {size: 3000, value: 50000000},
