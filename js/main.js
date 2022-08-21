@@ -249,6 +249,9 @@ require([
     };
 
     function callAPI() {
+        if(map.layers[flightsLayer]){
+            map.remove(flightsLayer)
+        }
 
         let username = "andrew_winchell";
         let password = "ColtEverett2301!";
@@ -422,7 +425,7 @@ require([
                 map.add(flightsLayer)
             }
         });
-        setTimeout(callAPI, 6000);
+        setTimeout(callAPI, 12000);
     };
     callAPI();
     console.log(map.layers)
