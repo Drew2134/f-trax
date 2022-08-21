@@ -187,7 +187,7 @@ require([
     CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
 
     searchWidget.on("search-complete", (e) => {
-        console.log(e.results)
+        console.log(e.results[0])
     })
 
     function callAPI() {
