@@ -139,15 +139,16 @@ require([
     const scene = new SceneView({
         container: "viewDiv",
         map: map,
-        scale: 35000000,
         camera: {
             position: {
                 x: -97,
-                y: 10
+                y: 10,
+                z: 35000000
             },
             tilt: 35
         }
     });
+    console.log(scene.scale, $view.scale, scene.zoomScale)
 
     //Home Widget - add to top-left map container
     const homeButton = new Home({
@@ -272,7 +273,7 @@ require([
                         },
                         {
                             type: "size",
-                            valueExpression: "$scene.scale",
+                            valueExpression: "$view.scale",
                             stops: [
                                 {size: 5000, value: 25000000},
                                 {size: 1000, value: 6250000},
