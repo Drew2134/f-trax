@@ -266,14 +266,15 @@ require([
                         }
                     ],
                     visualVariables: [
-                        {
+                        /*{
                             type: "rotation",
                             field: "true_track"
-                        },
+                        },*/
                         {
                             type: "size",
                             minSize: 20,
-                            maxSize: 20
+                            maxSize: 20,
+                            axis: "height"
                         }
                     ]
                 };
