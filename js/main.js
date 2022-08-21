@@ -231,27 +231,20 @@ require([
                 const url = URL.createObjectURL(blob);
                 
                 //Stylize the airports with ESRI Airport Icon
-                let planeSymbol = {
-                    type: "simple",
-                    symbol: {
-                        type: "web-style",
-                        name: "Airplane_Small_Passenger",
-                        portal: {
-                          url: "https://www.arcgis.com"
-                        },
-                        styleName: "EsriRealisticTransportationStyle"
-                    },
-                    label: "generic plane", 
-                    visualVariables: [{
-                        type: "rotation",
-                        field: "true_track"
-                    }]
-                        
-                        
-                        /*,
+                let planeRenderer = {
+                    type: "unique-value",
+                    field: "category",
                     uniqueValueInfos: [
                         {
                             value: 0,
+                            symbol: {
+                                type: "web-style",
+                                name: "Airplane_Small_Passenger",
+                                styleName: "EsriRealisticTransportationStyle"
+                            }
+                        },
+                        {
+                            value: "0",
                             symbol: {
                                 type: "web-style",
                                 name: "Airplane_Small_Passenger",
@@ -282,13 +275,19 @@ require([
                                 styleName: "EsriRealisticTransportationStyle"
                             }
                         }
-                    ]*/
+                    ],
+                    visualVariables: [
+                        {
+                            type: "rotation",
+                            field: "true_track"
+                        }
+                    ]
                 };
 
                 const flightsLayer = new GeoJSONLayer({
                     url: url,
                     hasZ: true,
-                    renderer: planeSymbol,
+                    renderer: planeRenderer,
                     copyright: "The OpenSky Network, https://opensky-network.org",
                 });
                 
