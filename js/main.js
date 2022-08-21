@@ -187,13 +187,22 @@ require([
     CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
 
     searchWidget.on("search-complete", (e) => {
-        let username = "andrew_winchell";
-        let password = "ColtEverett2301!";
-        let base64 = btoa(username + ":" + password);
         let icao = e.results[0].results[0].target.attributes.Icao_Identifier;
         let weekStart = getMonday();
         let current = Math.floor(Date.now() / 1000);
-        let url = "https://opensky-network.org/api/flights/arrival?airport=" + icao + "&begin=" + weekStart + "&end=" + current
+        let arrivalUrl = "https://opensky-network.org/api/flights/arrival?airport=" + icao + "&begin=" + weekStart + "&end=" + current
+        let departureUrl = "https://opensky-network.org/api/flights/departure?airport=" + icao + "&begin=" + weekStart + "&end=" + current
+
+        callArrivals(arrivalUrl);
+
+        callDepartures(departureUrl);
+
+    });
+
+    function callArrivals(url) {
+        let username = "andrew_winchell";
+        let password = "ColtEverett2301!";
+        let base64 = btoa(username + ":" + password);
 
         $.ajax({
             url: url,
@@ -204,12 +213,31 @@ require([
                 "Authorization": "Basic " + base64
             },
             success: (jsonData) => {
-                let numberArrivals = 0
-                console.log(jsonData)
+                let numberArrivals = jsonData.length;
+                $("#arrivals").html("Arrivals\n" + numberArrivals)
             }
-        })
+        });
+    };
 
-    });
+    function callDepartures(url) {
+        let username = "andrew_winchell";
+        let password = "ColtEverett2301!";
+        let base64 = btoa(username + ":" + password);
+
+        $.ajax({
+            url: url,
+            type: "GET",
+            dataType: "json",
+            async: false,
+            headers: {
+                "Authorization": "Basic " + base64
+            },
+            success: (jsonData) => {
+                let numberDepartures = jsonData.length;
+                $("#departures").html("Departures\n" + numberDepartures)
+            }
+        });
+    };
 
     //Function to get start of the week
     //Assuming start of flight week is Monday
