@@ -182,6 +182,10 @@ require([
     });
     CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
 
+    searchWidget.on("search-complete", (e) => {
+        console.log(e.results)
+    })
+
     function callAPI() {
 
         let username = "andrew_winchell";
