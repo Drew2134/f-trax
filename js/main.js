@@ -340,7 +340,7 @@ require([
                         },
                         {
                             type: "rotation",
-                            field: "verticle_rate",
+                            field: "vertical_rate",
                             axis: "tilt"
                         },
                         {
