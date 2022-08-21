@@ -288,6 +288,7 @@ require([
                     },
                     copyright: "The OpenSky Network, https://opensky-network.org",
                 });
+                console.log(flightsLayer)
                 
                 map.add(flightsLayer)
             }
