@@ -271,6 +271,11 @@ require([
                             field: "true_track"
                         },
                         {
+                            type: "rotation",
+                            axis: "tilt",
+                            field: "verticle_rate"
+                        },
+                        {
                             type: "size",
                             valueExpression: "$view.scale",
                             stops: [
