@@ -7,3 +7,16 @@ html, body {
     height: 750px;
     padding: 50px 0px 0px 0px;
 }
+
+.stats {
+    display: inline-block;
+    padding: 750px 0px 0px 0px;
+    width: 100%;
+}
+
+.infographic {
+    display: inline-block;
+    height: calc(100vh - 750px);
+    width: 250px;
+    padding: 5px 5px 5px 5px;
+}
