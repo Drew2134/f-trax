@@ -277,6 +277,7 @@ require([
                         "coordinates": [item[5], item[6], item[7]]
                     }
                     geoJSONFeature["properties"] = {
+                        "icao": item[0],
                         "callsign": item[1],
                         "origin_country": item[2],
                         "longitude": item[5],
@@ -372,6 +373,10 @@ require([
                             type: "fields",
                             fieldInfos: [
                                 {
+                                    fieldName: "icao",
+                                    label: "ICAO ID"
+                                },
+                                {
                                     fieldName: "callsign",
                                     label: "Callsign"
                                 },
@@ -389,7 +394,7 @@ require([
                                 },
                                 {
                                     fieldName: "velocity",
-                                    label: "velocity"
+                                    label: "Velocity (m/s)"
                                 },
                                 {
                                     fieldName: "vertical_rate",
@@ -397,7 +402,7 @@ require([
                                 },
                                 {
                                     fieldName: "baro_altitude",
-                                    label: "Altitude"
+                                    label: "Altitude (m)"
                                 },
                                 {
                                     fieldName: "true_track",
