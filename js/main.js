@@ -279,7 +279,7 @@ require([
                 const flightsLayer = new GeoJSONLayer({
                     url: url,
                     hasZ: true,
-                    renderer: planeSymbol,
+                    //renderer: planeSymbol,
                     copyright: "The OpenSky Network, https://opensky-network.org",
                 });
                 
