@@ -252,8 +252,8 @@ require([
 
     function callAPI() {
         if(map.findLayerById("flights")){
-            map.remove("flights")
-        }
+            map.remove(map.findLayerById("flights"));
+        };
 
         let username = "andrew_winchell";
         let password = "ColtEverett2301!";
