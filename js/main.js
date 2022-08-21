@@ -257,7 +257,7 @@ require([
                             symbol: privatePlane
                         },
                         {
-                            value: 3,
+                            value: "3",
                             symbol: smallPlane
                         },
                         {
