@@ -237,6 +237,9 @@ require([
                     symbol: {
                         type: "web-style",
                         name: "Airplane_Small_Passenger",
+                        portal: {
+                          url: "https://www.arcgis.com"
+                        },
                         styleName: "EsriRealisticTransportationStyle"
                     },
                     label: "generic place", 
