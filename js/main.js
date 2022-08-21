@@ -272,8 +272,8 @@ require([
                         },
                         {
                             type: "size",
-                            minSize: 200,
-                            maxSize: 200,
+                            minSize: 2000,
+                            maxSize: 2000,
                             axis: "height"
                         }
                     ]
