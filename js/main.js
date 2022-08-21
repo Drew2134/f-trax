@@ -250,7 +250,7 @@ require([
                 const planeRenderer = {
                     type: "unique-value",
                     field: "category",
-                    //defaultSymbol: smallPlane,
+                    defaultSymbol: smallPlane,
                     uniqueValueInfos: [
                         {
                             value: 2,
