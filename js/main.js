@@ -4,6 +4,7 @@ require([
     "esri/Map",
     "esri/layers/GeoJSONLayer",
     "esri/views/SceneView",
+    "esri/symbols/WebStyleSymbol"
 
     //Widgets
     "esri/widgets/Home",
@@ -20,7 +21,7 @@ require([
     "calcite-maps/calcitemaps-arcgis-support-v0.10",
 
     "dojo/domReady!"
-], function(esriConfig, Map, GeoJSONLayer, SceneView, Home, Search, Collapse, Dropdown, CalciteMaps, CalciteMapArcGISSupport){
+], function(esriConfig, Map, GeoJSONLayer, SceneView, WebStyleSymbol, Home, Search, Collapse, Dropdown, CalciteMaps, CalciteMapArcGISSupport){
 
     esriConfig.apiKey = "AAPKb765a73f61db40b189cd2ec292a872aaUGEazH9qCAdMNXi_0IzSi0RV3jKMpqezs6gUtr8xIRhZTPMnXU8AbU5t3L-WxZFQ";
 
@@ -229,26 +230,41 @@ require([
                 });
 
                 const url = URL.createObjectURL(blob);
-
-                const flightsLayer = new GeoJSONLayer({
-                    url: url,
-                    hasZ: true,
-                    copyright: "The OpenSky Network, https://opensky-network.org",
-                });
                 
+                const privatePlane = new WebStyleSymbol({
+                    name: "Airplane_Private",
+                    styleName: "EsriRealisticTransportationStyle"
+                });
+
+                const smallPlane = new WebStyleSymbol({
+                    name: "Airplane_Small_Passenger",
+                    styleName: "EsriRealisticTransportationStyle"
+                });
+
+                const largePlane = new WebStyleSymbol({
+                    name: "Airplane_Large_Passenger",
+                    styleName: "EsriRealisticTransportationStyle"
+                });
+
                 //Stylize the airports with ESRI Airport Icon
-                let planeSymbol = {
-                    type: "point-3d",
-                    symbolLayers: [{
-                        "type": "object",
-                        "width": 20,
-                        "height": 5,
-                        "depth": 22,
-                        "anchor": "origin",
-                        "resource": {
-                            "href": "https://static.arcgis.com/arcgis/styleItems/RealisticTransportation/web/resource/Airplane_Small_Passenger.json"
+                let planeRenderer = {
+                    type: "unique-value",
+                    field: "category",
+                    defaultSymbol: smallPlane,
+                    uniqueValueInfos: [
+                        {
+                            value: 2,
+                            symbol: privatePlane
+                        },
+                        {
+                            value: 3,
+                            symbol: smallPlane
+                        },
+                        {
+                            value: 4,
+                            symbol: largePlane
                         }
-                    }],
+                    ],
                     visualVariables: [
                         {
                             type: "rotation",
@@ -257,11 +273,12 @@ require([
                     ]
                 };
 
-                //Render airports with custom style
-                flightsLayer.renderer = {
-                    type: "simple",
-                    symbol: planeSymbol
-                }
+                const flightsLayer = new GeoJSONLayer({
+                    url: url,
+                    hasZ: true,
+                    renderer: planeRenderer,
+                    copyright: "The OpenSky Network, https://opensky-network.org",
+                });
                 
                 map.add(flightsLayer)
             }
