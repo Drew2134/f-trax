@@ -4,7 +4,7 @@ require([
     "esri/Map",
     "esri/layers/GeoJSONLayer",
     "esri/views/SceneView",
-    "esri/symbols/WebStyleSymbol"
+    "esri/symbols/WebStyleSymbol",
 
     //Widgets
     "esri/widgets/Home",
