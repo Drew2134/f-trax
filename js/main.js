@@ -249,8 +249,8 @@ require([
     };
 
     function callAPI() {
-        if(map.layers[flightsLayer]){
-            map.remove(flightsLayer)
+        if(map.layers){
+            console.log(map.layers);
         }
 
         let username = "andrew_winchell";
@@ -428,5 +428,4 @@ require([
         setTimeout(callAPI, 12000);
     };
     callAPI();
-    console.log(map.layers)
 });
