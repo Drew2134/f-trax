@@ -1,7 +1,7 @@
 require([
     //ArcGIS JS API
     "esri/config",
-    "esri/Map",
+    "esri/WebScene",
     "esri/layers/GeoJSONLayer",
     "esri/views/SceneView",
     "esri/symbols/WebStyleSymbol",
@@ -21,7 +21,7 @@ require([
     "calcite-maps/calcitemaps-arcgis-support-v0.10",
 
     "dojo/domReady!"
-], function(esriConfig, Map, GeoJSONLayer, SceneView, WebStyleSymbol, Home, Search, Collapse, Dropdown, CalciteMaps, CalciteMapArcGISSupport){
+], function(esriConfig, WebScene, GeoJSONLayer, SceneView, WebStyleSymbol, Home, Search, Collapse, Dropdown, CalciteMaps, CalciteMapArcGISSupport){
 
     esriConfig.apiKey = "AAPKb765a73f61db40b189cd2ec292a872aaUGEazH9qCAdMNXi_0IzSi0RV3jKMpqezs6gUtr8xIRhZTPMnXU8AbU5t3L-WxZFQ";
 
@@ -130,8 +130,8 @@ require([
         symbol: rnwySymbol
     };
 
-    const map = new Map({
-        basemap: "arcgis-topographic",
+    const map = new WebScene({
+        basemap: "satellite",
         ground: "world-elevation",
         layers: [aptLayer, rnwyLayer]
     });
