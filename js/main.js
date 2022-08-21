@@ -232,63 +232,17 @@ require([
                 
                 //Stylize the airports with ESRI Airport Icon
                 let planeRenderer = {
-                    type: "unique-value",
-                    field: "category",
-                    defaultSymbol: {
-                        type: "point-3d",
-                        symbolLayers: [{
-                            "type": "object",
-                            "width": 20,
-                            "height": 5,
-                            "depth": 22,
-                            "anchor": "origin",
-                            "resource": {
-                                "href": "https://static.arcgis.com/arcgis/styleItems/RealisticTransportation/web/resource/Airplane_Small_Passenger.json"
-                            }
-                        }]
-                    },
-                    uniqueValueInfos: [
-                        {
-                            value: 0,
-                            symbol: {
-                                type: "web-style",
-                                name: "Airplane_Small_Passenger",
-                                styleName: "EsriRealisticTransportationStyle"
-                            }
-                        },
-                        {
-                            value: "0",
-                            symbol: {
-                                type: "web-style",
-                                name: "Airplane_Small_Passenger",
-                                styleName: "EsriRealisticTransportationStyle"
-                            }
-                        },
-                        {
-                            value: 2,
-                            symbol: {
-                                type: "web-style",
-                                name: "Airplane_Private",
-                                styleName: "EsriRealisticTransportationStyle"
-                            }
-                        },
-                        {
-                            value: 3,
-                            symbol: {
-                                type: "web-style",
-                                name: "Airplane_Small_Passenger",
-                                styleName: "EsriRealisticTransportationStyle"
-                            }
-                        },
-                        {
-                            value: 4,
-                            symbol: {
-                                type: "web-style",
-                                name: "Airplane_Large_Passenger",
-                                styleName: "EsriRealisticTransportationStyle"
-                            }
+                    type: "point-3d",
+                    symbolLayers: [{
+                        "type": "object",
+                        "width": 20,
+                        "height": 5,
+                        "depth": 22,
+                        "anchor": "origin",
+                        "resource": {
+                            "href": "https://static.arcgis.com/arcgis/styleItems/RealisticTransportation/web/resource/Airplane_Small_Passenger.json"
                         }
-                    ],
+                    }],
                     visualVariables: [
                         {
                             type: "rotation",
