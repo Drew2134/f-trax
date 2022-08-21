@@ -277,6 +277,9 @@ require([
                     url: url,
                     hasZ: true,
                     renderer: planeRenderer,
+                    elevationInfo: {
+                        mode: "relative-to-ground"
+                    },
                     copyright: "The OpenSky Network, https://opensky-network.org",
                 });
                 
