@@ -422,7 +422,7 @@ require([
                 map.add(flightsLayer)
             }
         });
-        setTimeout(callAPI, 600000);
+        setTimeout(callAPI, 6000);
     };
     callAPI();
     console.log(map.layers)
