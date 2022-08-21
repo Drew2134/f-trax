@@ -139,11 +139,11 @@ require([
     const scene = new SceneView({
         container: "viewDiv",
         map: map,
+        scale: 35000000,
         camera: {
             position: {
                 x: -97,
-                y: 10,
-                z: 3500000
+                y: 10
             },
             tilt: 35
         }
@@ -272,7 +272,7 @@ require([
                         },
                         {
                             type: "size",
-                            valueExpression: "$view.scale",
+                            valueExpression: "$scene.scale",
                             stops: [
                                 {size: 5000, value: 25000000},
                                 {size: 1000, value: 6250000},
