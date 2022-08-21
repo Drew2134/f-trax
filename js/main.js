@@ -237,7 +237,7 @@ require([
                     defaultSymbol: {
                         type: "point-3d",
                         symbolLayers: [{
-                            "type": "Object",
+                            "type": "object",
                             "width": 20,
                             "height": 5,
                             "depth": 22,
