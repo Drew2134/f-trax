@@ -241,7 +241,7 @@ require([
                         },
                         styleName: "EsriRealisticTransportationStyle"
                     },
-                    label: "generic place", 
+                    label: "generic plane", 
                     visualVariables: [{
                         type: "rotation",
                         field: "true_track"
