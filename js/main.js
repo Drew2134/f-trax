@@ -299,10 +299,6 @@ require([
 
                 const url = URL.createObjectURL(blob);
                 
-                if(map.findLayerById("flights")){
-                    map.remove(map.findLayerById("flights"));
-                };
-                
                 const privatePlane = new WebStyleSymbol({
                     name: "Airplane_Private",
                     styleName: "EsriRealisticTransportationStyle"
@@ -424,6 +420,10 @@ require([
                 };
             
                 flightsLayer.popupTemplate = flightsTemplate;
+                
+                if(map.findLayerById("flights")){
+                    map.remove(map.findLayerById("flights"));
+                };
                 
                 map.add(flightsLayer)
             }
