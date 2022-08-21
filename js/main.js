@@ -233,13 +233,21 @@ require([
                 
                 //Stylize the airports with ESRI Airport Icon
                 let planeSymbol = {
-                    type: "unique-value",
-                    field: "category",
-                    defaultSymbol: {
+                    type: "simple",
+                    symbol: {
                         type: "web-style",
                         name: "Airplane_Small_Passenger",
                         styleUrl: "https://static.arcgis.com/arcgis/styleItems/RealisticTransportation/web/Airplane_Small_Passenger.json"
                     },
+                    label: "generic place", 
+                    visualVariables: [{
+                        type: "rotation",
+                        field: "true_track",
+                        rotationType: "geographic"
+                    }]
+                        
+                        
+                        /*,
                     uniqueValueInfos: [
                         {
                             value: 0,
@@ -273,13 +281,13 @@ require([
                                 styleName: "EsriRealisticTransportationStyle"
                             }
                         }
-                    ]
+                    ]*/
                 };
 
                 const flightsLayer = new GeoJSONLayer({
                     url: url,
                     hasZ: true,
-                    //renderer: planeSymbol,
+                    renderer: planeSymbol,
                     copyright: "The OpenSky Network, https://opensky-network.org",
                 });
                 
