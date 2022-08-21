@@ -251,10 +251,6 @@ require([
     };
 
     function callAPI() {
-        if(map.findLayerById("flights")){
-            map.remove(map.findLayerById("flights"));
-        };
-
         let username = "andrew_winchell";
         let password = "ColtEverett2301!";
         let base64 = btoa(username + ":" + password);
@@ -302,6 +298,10 @@ require([
                 });
 
                 const url = URL.createObjectURL(blob);
+                
+                if(map.findLayerById("flights")){
+                    map.remove(map.findLayerById("flights"));
+                };
                 
                 const privatePlane = new WebStyleSymbol({
                     name: "Airplane_Private",
