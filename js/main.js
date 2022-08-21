@@ -187,8 +187,38 @@ require([
     CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
 
     searchWidget.on("search-complete", (e) => {
-        console.log(e.results[0].results[0].target.attributes.Icao_Identifier)
-    })
+        let username = "andrew_winchell";
+        let password = "ColtEverett2301!";
+        let base64 = btoa(username + ":" + password);
+        let icao = e.results[0].results[0].target.attributes.Icao_Identifier;
+        let weekStart = getMonday();
+        let current = Date.now * 1000;
+        let url = "https://opensky-network.org/api/flights/arrival?airport=" + icao + "begin=" + weekStart + "end=" + current
+
+        $.ajax({
+            url: url,
+            type: "GET",
+            dataType: "json",
+            async: false,
+            headers: {
+                "Authorization": "Basic " + base64
+            },
+            success: (jsonData) => {
+                let numberArrivals = 0
+                console.log(jsonData)
+            }
+        })
+
+    });
+
+    //Function to get start of the week
+    //Assuming start of flight week is Monday
+    function getMonday() {
+        date = new Date();
+        var day = date.getDay(),
+            diff = date.getDate() - day + (day == 0 ? -6:1);
+        return new Date(date.setDate(diff));
+    };
 
     function callAPI() {
 
