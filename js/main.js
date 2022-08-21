@@ -176,7 +176,7 @@ require([
                 outFields: ["*"],
                 name: "Airports",
                 placeholder: "example: MKE",
-                zoomScale: 300000
+                zoomScale: 250000
             }
         ]
     });
@@ -275,9 +275,7 @@ require([
                             valueExpression: "$view.scale",
                             stops: [
                                 {size: 5000, value: 25000000},
-                                {size: 1000, value: 6250000},
-                                {size: 200, value: 1562500},
-                                {size: 50, value: 390625}
+                                {size: 50, value: 1562500},
                             ],
                             axis: "height"
                         }
