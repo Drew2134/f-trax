@@ -272,8 +272,13 @@ require([
                         },
                         {
                             type: "size",
-                            minSize: 2000,
-                            maxSize: 2000,
+                            valueExpression: "$view.scale",
+                            stops: [
+                                {size: 5000, value: 500000000},
+                                {size: 3000, value: 50000000},
+                                {size: 1000, value: 5000000},
+                                {size: 500, value: 500000}
+                            ],
                             axis: "height"
                         }
                     ]
