@@ -220,7 +220,7 @@ require([
                         "true_track": item[10],
                         "vertical_rate": item[11],
                         "geo_altitude": item[13],
-                        "category": item[17]
+                        "category": item[16]
                     }
                     console.log(geoJSONFeature, geoJSONFeature.properties)
                     geoJson.features.push(geoJSONFeature)
