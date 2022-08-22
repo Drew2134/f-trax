@@ -422,11 +422,12 @@ require([
                 flightsLayer.popupTemplate = flightsTemplate;
                 
                 if(map.findLayerById("flights")){
-                    map.remove(map.layers[2]);
-                    map.add(flightsLayer)
+                    map.add(flightsLayer, 1)
+                    map.remove(map.layers[0]);
                 } else {
-                    map.add(flightsLayer)
+                    map.add(flightsLayer, 0)
                 };
+                
             }
         });
         setTimeout(callAPI, 12000);
