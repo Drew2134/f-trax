@@ -187,6 +187,7 @@ require([
     CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
 
     searchWidget.on("search-complete", (e) => {
+        console.log(e.results)
         let icao = e.results[0].results[0].target.attributes.Icao_Identifier;
         let weekStart = getMonday();
         let current = Math.floor(Date.now() / 1000);
