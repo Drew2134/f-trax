@@ -216,7 +216,7 @@ require([
             },
             success: (jsonData) => {
                 let numberArrivals = jsonData.length;
-                $("#arrivals").html("Arrivals\n" + numberArrivals)
+                $("#arrivals").html(numberArrivals)
             }
         });
     };
@@ -236,7 +236,7 @@ require([
             },
             success: (jsonData) => {
                 let numberDepartures = jsonData.length;
-                $("#departures").html("Departures\n" + numberDepartures)
+                $("#departures").html(numberDepartures)
             }
         });
     };
