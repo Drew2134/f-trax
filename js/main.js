@@ -247,7 +247,7 @@ require([
         date = new Date();
         var day = date.getDay(),
             diff = date.getDate() - day + (day == 0 ? -6:1);
-        return Math.floor(new Date(date.setDate(diff)).getTime() / 1000);
+        return Math.floor(new Date(date.setDate(diff).setHours(0, 0, 0, 0)).getTime() / 1000);
     };
 
     function callAPI() {
