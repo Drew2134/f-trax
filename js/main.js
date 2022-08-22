@@ -27,7 +27,7 @@ require([
 
     const aptLayer = new GeoJSONLayer({
         id: "airports",
-        url: "https://geo.dot.gov/mapping/rest/services/NTAD/Airports/MapServer/0/query?where=Fac_Type%20%3D%20%27AIRPORT%27%20AND%20Fac_Use%20%3D%20%27PU%27%20AND%20NOT%20State_Name%20%3D%20IS%20NULL&outFields=Loc_Id,City,County,State_Name,Fac_Name,Fac_Type,Fac_Use,Owner_Name,Responsible_Artcc_Name,Responsible_Artcc_Comp_Id&outSR=4326&f=geojson",
+        url: "https://geo.dot.gov/mapping/rest/services/NTAD/Airports/MapServer/0/query?where=Fac_Type%20%3D%20%27AIRPORT%27%20AND%20Fac_Use%20%3D%20%27PU%27%20AND%20NOT%20State_Name%20IS%20NULL&outFields=Loc_Id,City,County,State_Name,Fac_Name,Fac_Type,Fac_Use,Owner_Name,Responsible_Artcc_Name,Responsible_Artcc_Comp_Id&outSR=4326&f=geojson",
         copyright: "U.S. DOT",
         minScale: 2750000,
         outFields: [
