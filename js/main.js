@@ -200,9 +200,9 @@ require([
         let arrivalUrl = "https://opensky-network.org/api/flights/arrival?airport=" + icao + "&begin=" + weekStart + "&end=" + current
         let departureUrl = "https://opensky-network.org/api/flights/departure?airport=" + icao + "&begin=" + weekStart + "&end=" + current
 
-        callArrivals(arrivalUrl);
+        //callArrivals(arrivalUrl);
 
-        callDepartures(departureUrl);
+        //callDepartures(departureUrl);
 
     });
 
