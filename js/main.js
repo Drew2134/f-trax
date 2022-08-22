@@ -422,7 +422,7 @@ require([
                 flightsLayer.popupTemplate = flightsTemplate;
                 
                 if(map.findLayerById("flights")){
-                    setInterval(refreshLayer(flightsLayer), 2000)
+                    setInterval(refreshLayer(flightsLayer), 5000)
                 } else {
                     map.add(flightsLayer, 0)
                 };
