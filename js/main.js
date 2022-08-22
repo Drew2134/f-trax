@@ -425,7 +425,7 @@ require([
                     map.add(flightsLayer, 1)
                     setTimeout(() => {
                         map.remove(map.layers.items[0])
-                    }, 1750)
+                    }, 1000)
                 } else {
                     map.add(flightsLayer, 0)
                 };
