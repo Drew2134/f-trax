@@ -362,6 +362,7 @@ require([
                     url: url,
                     hasZ: true,
                     renderer: planeRenderer,
+                    definitionExpression: "origin_country = 'United States'",
                     elevationInfo: {
                         mode: "relative-to-ground"
                     },
