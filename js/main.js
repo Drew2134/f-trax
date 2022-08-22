@@ -27,7 +27,7 @@ require([
 
     const aptLayer = new GeoJSONLayer({
         id: "airports",
-        url: "https://geo.dot.gov/mapping/rest/services/NTAD/Airports/MapServer/0/query?where=1%3D1&outFields=Loc_Id,City,County,State_Name,Fac_Name,Fac_Type,Fac_Use,Owner_Name,Responsible_Artcc_Name,Responsible_Artcc_Comp_Id&outSR=4326&f=geojson",
+        url: "https://geo.dot.gov/mapping/rest/services/NTAD/Airports/MapServer/0/query?where=Fac_Type%20%3D%20%27AIRPORT%27%20AND%20Fac_Use%20%3D%20%27PU%27%20AND%20State_Name+IS+NOT+NULL&outFields=Loc_Id,City,County,State_Name,Fac_Name,Fac_Type,Fac_Use,Owner_Name,Responsible_Artcc_Name,Responsible_Artcc_Comp_Id&outSR=4326&f=geojson",
         copyright: "U.S. DOT",
         minScale: 2750000,
         outFields: [
@@ -39,8 +39,7 @@ require([
             "Owner_Name",
             "Responsible_Artcc_Name",
             "Responsible_Artcc_Comp_Id"
-        ],
-        definitionExpression: "Fac_Type = 'AIRPORT' AND Fac_Use = 'PU' AND State_Name IS NOT NULL"
+        ]
     });
 
     const aptTemplate = {
@@ -118,7 +117,7 @@ require([
     const rnwyGeoJSON = "data/runways.geojson";
     const rnwyLayer = new GeoJSONLayer({
         id: "runways",
-        url: rnwyGeoJSON,
+        url: "https://geo.dot.gov/mapping/rest/services/NTAD/Runways/MapServer/0/query?where=1%3D1&outFields=Rwy_Id,Surface,Pavement_Classification,Loc_Id,Fac_Name&outSR=4326&f=geojson",
         copyright: "U.S. DOT",
         minScale: 250000
     });
