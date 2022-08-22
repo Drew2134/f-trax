@@ -189,20 +189,15 @@ require([
     CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
 
     searchWidget.on("search-complete", (e) => {
-        view.goTo({
-            center: [e.results[0].results[0].target.geometry.centroid.longitude, e.results[0].results[0].target.geometry.centroid.latitude],
-            scale: 250000
-        });
-
         let icao = e.results[0].results[0].target.attributes.Icao_Id;
         let weekStart = getMonday();
         let current = Math.floor(Date.now() / 1000);
         let arrivalUrl = "https://opensky-network.org/api/flights/arrival?airport=" + icao + "&begin=" + weekStart + "&end=" + current
         let departureUrl = "https://opensky-network.org/api/flights/departure?airport=" + icao + "&begin=" + weekStart + "&end=" + current
 
-        //callArrivals(arrivalUrl);
+        callArrivals(arrivalUrl);
 
-        //callDepartures(departureUrl);
+        callDepartures(departureUrl);
 
     });
 
