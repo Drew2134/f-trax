@@ -246,8 +246,10 @@ require([
     function getMonday() {
         date = new Date();
         var day = date.getDay(),
-            diff = date.getDate() - day + (day == 0 ? -6:1);
-        return Math.floor(new Date(date.setDate(diff)).getTime() / 1000);
+            diff = date.getDate() - day + (day == 0 ? -6:1),
+            weekStart = new Date(date.setHours(0, 0, 0, 0));
+        weekStart.setDate(diff);
+        return Math.floor(weekStart / 1000);
     };
 
     function callAPI() {
