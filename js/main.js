@@ -38,8 +38,8 @@ require([
             "County",
             "State_Name",
             "Owner_Name",
-            "Responsi_2",
-            "Responsibl"
+            "ARTCC_Id",
+            "ARTCC_Name"
         ],
         definitionExpression: "Fac_Type = 'AIRPORT' AND Fac_Use = 'PU' AND State_Name IS NOT NULL"
     });
@@ -79,11 +79,11 @@ require([
                         label: "Owner"
                     },
                     {
-                        fieldName: "Responsi_2",
+                        fieldName: "ARTCC_Name",
                         label: "ARTCC Name"
                     },
                     {
-                        fieldName: "Responsibl",
+                        fieldName: "ARTCC_Id",
                         label: "ARTCC Id"
                     }
                 ]
@@ -189,7 +189,7 @@ require([
     CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
 
     searchWidget.on("search-complete", (e) => {
-        let icao = e.results[0].results[0].target.attributes.Icao_Ident;
+        let icao = e.results[0].results[0].target.attributes.Icao_Id;
         let weekStart = getMonday();
         let current = Math.floor(Date.now() / 1000);
         let arrivalUrl = "https://opensky-network.org/api/flights/arrival?airport=" + icao + "&begin=" + weekStart + "&end=" + current
