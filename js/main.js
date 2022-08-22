@@ -25,10 +25,9 @@ require([
 
     esriConfig.apiKey = "AAPKb765a73f61db40b189cd2ec292a872aaUGEazH9qCAdMNXi_0IzSi0RV3jKMpqezs6gUtr8xIRhZTPMnXU8AbU5t3L-WxZFQ";
 
-    const aptGeoJSON = "data/airports.geojson";
     const aptLayer = new GeoJSONLayer({
         id: "airports",
-        url: "https://geo.dot.gov/mapping/rest/services/NTAD/Airports/MapServer/0/query?where=1%3D1&outFields=Loc_Id,City,County,State_Name,Fac_Name,Owner_Name,Responsible_Artcc_Name,Responsible_Artcc_Comp_Id&outSR=4326&f=geojson",
+        url: "https://geo.dot.gov/mapping/rest/services/NTAD/Airports/MapServer/0/query?where=1%3D1&outFields=Loc_Id,City,County,State_Name,Fac_Name,Fac_Use,Owner_Name,Responsible_Artcc_Name,Responsible_Artcc_Comp_Id&outSR=4326&f=geojson",
         copyright: "U.S. DOT",
         minScale: 2750000,
         outFields: [
