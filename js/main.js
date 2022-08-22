@@ -25,9 +25,10 @@ require([
 
     esriConfig.apiKey = "AAPKb765a73f61db40b189cd2ec292a872aaUGEazH9qCAdMNXi_0IzSi0RV3jKMpqezs6gUtr8xIRhZTPMnXU8AbU5t3L-WxZFQ";
 
+    const aptGeoJSON = "data/airports1.geojson";
     const aptLayer = new GeoJSONLayer({
         id: "airports",
-        url: "https://geo.dot.gov/mapping/rest/services/NTAD/Airports/MapServer/0/query?where=Fac_Type%20%3D%20%27AIRPORT%27%20AND%20Fac_Use%20%3D%20%27PU%27%20AND%20NOT%20State_Name%20IS%20NULL&outFields=Loc_Id,City,County,State_Name,Fac_Name,Fac_Type,Fac_Use,Owner_Name,Responsible_Artcc_Name,Responsible_Artcc_Comp_Id&outSR=4326&f=geojson",
+        url: aptGeoJSON,
         copyright: "U.S. DOT",
         minScale: 2750000,
         outFields: [
@@ -37,9 +38,10 @@ require([
             "County",
             "State_Name",
             "Owner_Name",
-            "Responsible_Artcc_Name",
-            "Responsible_Artcc_Comp_Id"
-        ]
+            "Responsi_2",
+            "Responsibl"
+        ],
+        definitionExpression: "Fac_Type = 'AIRPORT' AND Fac_Use = 'PU' AND State_Name IS NOT NULL"
     });
 
     const aptTemplate = {
@@ -57,7 +59,7 @@ require([
                         label: "Location Id"
                     },
                     {
-                        fieldName: "Icao_Identifier",
+                        fieldName: "Icao_Ident",
                         label: "Icao Identifier"
                     },
                     {
@@ -77,11 +79,11 @@ require([
                         label: "Owner"
                     },
                     {
-                        fieldName: "Responsible_Artcc_Name",
+                        fieldName: "Responsi_2",
                         label: "ARTCC Name"
                     },
                     {
-                        fieldName: "Responsible_Artcc_Comp_Id",
+                        fieldName: "Responsibl",
                         label: "ARTCC Id"
                     }
                 ]
@@ -117,7 +119,7 @@ require([
     const rnwyGeoJSON = "data/runways.geojson";
     const rnwyLayer = new GeoJSONLayer({
         id: "runways",
-        url: "https://geo.dot.gov/mapping/rest/services/NTAD/Runways/MapServer/0/query?where=1%3D1&outFields=Rwy_Id,Surface,Pavement_Classification,Loc_Id,Fac_Name&outSR=4326&f=geojson",
+        url: rnwyGeoJSON,
         copyright: "U.S. DOT",
         minScale: 250000
     });
@@ -187,8 +189,7 @@ require([
     CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
 
     searchWidget.on("search-complete", (e) => {
-        console.log(e.results)
-        let icao = e.results[0].results[0].target.attributes.Icao_Identifier;
+        let icao = e.results[0].results[0].target.attributes.Icao_Ident;
         let weekStart = getMonday();
         let current = Math.floor(Date.now() / 1000);
         let arrivalUrl = "https://opensky-network.org/api/flights/arrival?airport=" + icao + "&begin=" + weekStart + "&end=" + current
