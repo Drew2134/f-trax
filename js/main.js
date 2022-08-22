@@ -422,10 +422,10 @@ require([
                 flightsLayer.popupTemplate = flightsTemplate;
                 
                 if(map.findLayerById("flights")){
+                    map.add(flightsLayer, 1)
                     setTimeout(() => {
-                        map.add(flightsLayer, 1)
+                        map.remove(map.layers.items[0])
                     }, 2000)
-                    map.remove(map.layers.items[0])
                 } else {
                     map.add(flightsLayer, 0)
                 };
