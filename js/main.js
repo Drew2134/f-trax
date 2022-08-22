@@ -284,7 +284,6 @@ require([
                         "longitude": item[5],
                         "latitude": item[6],
                         "baro_altitude": item[7],
-                        "on_ground": item[8],
                         "velocity": item[9],
                         "true_track": item[10],
                         "vertical_rate": item[11],
