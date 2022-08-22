@@ -423,6 +423,7 @@ require([
                 
                 if(map.findLayerById("flights")){
                     map.remove(map.findLayerById("flights"));
+                    map.add(flightsLayer)
                 } else {
                     map.add(flightsLayer)
                 };
