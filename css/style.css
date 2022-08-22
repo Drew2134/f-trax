@@ -20,4 +20,6 @@ html, body {
     width: 250px;
     padding: 10px;
     background-color: #353535;
+    color: #ffffff;
+    text-align: center;
 }
