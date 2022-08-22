@@ -241,12 +241,10 @@ require([
         });
     };
 
-    //Function to get start of the week
-    //Assuming start of flight week is Monday
+    //Function to get last 7 days
     function getMonday() {
         date = new Date();
-        var day = date.getDay(),
-            diff = date.getDate() - day + (day == 0 ? -6:1),
+        var diff = date.getDate() - 6,
             weekStart = new Date(date.setHours(0, 0, 0, 0));
         weekStart.setDate(diff);
         return Math.floor(weekStart / 1000);
