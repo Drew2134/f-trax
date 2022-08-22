@@ -422,7 +422,7 @@ require([
                 flightsLayer.popupTemplate = flightsTemplate;
                 
                 if(map.findLayerById("flights")){
-                    map.findLayerById("flights").refresh();
+                    map.remove(map.findLayerById("flights"));
                 } else {
                     map.add(flightsLayer)
                 };
