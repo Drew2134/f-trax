@@ -422,9 +422,7 @@ require([
                 flightsLayer.popupTemplate = flightsTemplate;
                 
                 if(map.findLayerById("flights")){
-                    console.log(map.layers, map.layers.items[0])
-                    map.add(flightsLayer, 1)
-                    map.remove(map.layers.items[0]);
+                    setInterval(refreshLayer(flightsLayer), 1000)
                 } else {
                     map.add(flightsLayer, 0)
                 };
@@ -434,4 +432,9 @@ require([
         setTimeout(callAPI, 12000);
     };
     callAPI();
+
+    function refreshLayer(layer) {
+        map.add(layer, 1)
+        map.remove(map.layers.items[0])
+    }
 });
