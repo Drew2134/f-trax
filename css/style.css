@@ -4,20 +4,20 @@ html, body {
 }
 
 #viewDiv {
-    height: 750px;
+    height: 80vh
     padding: 50px 0px 0px 0px;
 }
 
 .stats {
     display: inline-block;
-    padding: 750px 0px 0px 0px;
+    padding: 80vh 0px 0px 0px;
     width: 100%;
 }
 
 .infographic {
     display: inline-block;
     height: calc(100vh - 750px);
-    width: 250px;
+    width: 50vh;
     padding: 10px;
     background-color: #353535;
     color: #ffffff;
