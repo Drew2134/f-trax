@@ -155,7 +155,9 @@ require([
         }
     });
 
-    scene.popup.dockEnabled = true;
+    scene.popup.dockOptions = {
+        buttonEnabled: false
+    }
 
     //Home Widget - add to top-left map container
     const homeButton = new Home({
