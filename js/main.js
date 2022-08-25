@@ -159,8 +159,8 @@ require([
     scene.popup.dockOptions = {
         buttonEnabled: false,
         breakpoint: {
-            width: 200,
-            height: 200
+            width: 5000,
+            height: 5000
         }
     }
 
