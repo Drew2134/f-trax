@@ -442,7 +442,7 @@ require([
                 
             }
         });
-        setTimeout(callAPI, 12000);
+        //setTimeout(callAPI, 12000);
     };
     callAPI();
 });
