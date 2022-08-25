@@ -187,6 +187,7 @@ require([
         ]
     });
 
+    searchWidget.popup.dockEnabled = true;
     CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
 
     searchWidget.on("search-complete", (e) => {
