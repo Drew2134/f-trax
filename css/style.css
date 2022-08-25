@@ -25,17 +25,19 @@ html, body {
 }
 
 .infoH {
-    font-size: medium;
+    font-size: 25pt;
 }
 
 .infoF {
-    font-size: medium;
+    font-size: 25pt;
 }
 
 #arrivals {
-    font-size: large;
+    font-size: 32pt;
+    font-weight: bold;
 }
 
 #departures {
-    font-size: large;
+    font-size: 32pt;
+    font-weight: bold;
 }
