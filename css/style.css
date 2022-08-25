@@ -15,7 +15,7 @@ html, body {
 }
 
 .infographic {
-    display: inline-block;
+    display: inline-grid;
     height: 20vh;
     width: calc(50vw - 2px);
     padding: 10px;
