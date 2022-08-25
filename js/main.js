@@ -155,6 +155,7 @@ require([
         }
     });
 
+    scene.popup.dockEnabled = true;
     scene.popup.dockOptions = {
         buttonEnabled: false
     }
