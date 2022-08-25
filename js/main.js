@@ -182,7 +182,7 @@ require([
                 outFields: ["*"],
                 name: "Airports",
                 placeholder: "example: MKE",
-                zoomScale: 200000
+                zoomScale: 250000
             }
         ]
     });
