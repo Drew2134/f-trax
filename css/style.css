@@ -23,3 +23,19 @@ html, body {
     color: #ffffff;
     text-align: center;
 }
+
+.infoH {
+    font-size: medium;
+}
+
+.infoF {
+    font-size: medium;
+}
+
+#arrivals {
+    font-size: large;
+}
+
+#departures {
+    font-size: large;
+}
