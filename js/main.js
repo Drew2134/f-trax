@@ -116,6 +116,8 @@ require([
         symbol: aptSymbol
     }
 
+    aptLayer.popup.dockEnabled = true;
+
     const rnwyGeoJSON = "data/runways.geojson";
     const rnwyLayer = new GeoJSONLayer({
         id: "runways",
@@ -187,7 +189,6 @@ require([
         ]
     });
 
-    searchWidget.popup.dockEnabled = true;
     CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
 
     searchWidget.on("search-complete", (e) => {
