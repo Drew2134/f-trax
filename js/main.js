@@ -452,7 +452,7 @@ require([
                 
             }
         });
-        //setTimeout(callAPI, 12000);
+        setTimeout(callAPI, 15000);
     };
     callAPI();
 });
