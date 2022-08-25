@@ -182,10 +182,11 @@ require([
                 outFields: ["*"],
                 name: "Airports",
                 placeholder: "example: MKE",
-                zoomScale: 250000
+                zoomScale: 200000
             }
         ]
     });
+
     CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
 
     searchWidget.on("search-complete", (e) => {
