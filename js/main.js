@@ -157,7 +157,11 @@ require([
 
     scene.popup.dockEnabled = true;
     scene.popup.dockOptions = {
-        buttonEnabled: false
+        buttonEnabled: false,
+        breakpoint: {
+            width: 200,
+            height: 200
+        }
     }
 
     //Home Widget - add to top-left map container
