@@ -16,7 +16,7 @@ html, body {
 
 .infographic {
     display: inline-block;
-    height: calc(100vh - 750px);
+    height: 20vh;
     width: calc(50vw - 2px);
     padding: 10px;
     background-color: #353535;

@@ -356,11 +356,14 @@ require([
                     ]
                 };
 
+                //construct the flights layer from the URL (line 299)
                 const flightsLayer = new GeoJSONLayer({
                     id: "flights",
                     url: url,
                     hasZ: true,
+                    //assign plane rendered symbology to layer
                     renderer: planeRenderer,
+                    //only show flights originating in the US
                     definitionExpression: "origin_country = 'United States'",
                     elevationInfo: {
                         mode: "relative-to-ground"
@@ -368,6 +371,7 @@ require([
                     copyright: "The OpenSky Network, https://opensky-network.org",
                 });
 
+                //construct a popup template for flights
                 const flightsTemplate = {
                     title: "Flight {callsign}",
                     content: [
@@ -418,12 +422,18 @@ require([
                         }
                     ]
                 };
-            
+                
+                //attach flight template to the flight layer popupt action
                 flightsLayer.popupTemplate = flightsTemplate;
                 
+                //check to see if flights layer has been loaded yet
                 if(map.findLayerById("flights")){
+                    //always add the flights layer to position 1 in the layer list
                     map.add(flightsLayer, 1)
+                    //.5 second delay after adding flight layer to make transition appear smoother
+                    //layer is quite large and takes a second to render
                     setTimeout(() => {
+                        //remove the previous flights layer
                         map.remove(map.layers.items[0])
                     }, 500)
                 } else {
