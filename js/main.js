@@ -116,8 +116,6 @@ require([
         symbol: aptSymbol
     }
 
-    aptLayer.popup.dockEnabled = true;
-
     const rnwyGeoJSON = "data/runways.geojson";
     const rnwyLayer = new GeoJSONLayer({
         id: "runways",
@@ -156,6 +154,8 @@ require([
             tilt: 35
         }
     });
+
+    scene.popup.dockEnabled = true;
 
     //Home Widget - add to top-left map container
     const homeButton = new Home({
