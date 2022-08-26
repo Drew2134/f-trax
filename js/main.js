@@ -30,6 +30,7 @@ require([
 
     //link to airports geojson data
     const aptGeoJSON = "data/airports.geojson";
+
     //set aptLayer to use airports geojson
     const aptLayer = new GeoJSONLayer({
         id: "airports",
@@ -126,6 +127,7 @@ require([
 
     //link to runways geojson data
     const rnwyGeoJSON = "data/runways.geojson";
+    
     //set runway layer to use runway geojson
     const rnwyLayer = new GeoJSONLayer({
         id: "runways",
@@ -175,6 +177,7 @@ require([
 
     //allow docking of popup
     scene.popup.dockEnabled = true;
+
     //options for popup docking
     scene.popup.dockOptions = {
         //do not allow user to decide on docking
@@ -187,18 +190,20 @@ require([
         }
     }
 
-    //home Widget - add to top-left map container
+    //home widget - add to top-left map container
     const homeButton = new Home({
         view: scene
     });
+
+    //add home widget to the top left ui container
     scene.ui.add(
         {
             component: homeButton,
             position: "top-left",
+            //appear as the first available widget
             index: 0
         }
     );
-
 
     //search widget - add to navbar
     const searchWidget = new Search({
@@ -219,17 +224,35 @@ require([
         ]
     });
 
+    //expanding action on search widget
+    //built into library from calcite-maps
     CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
 
+    scene.on("click", (e) => {
+        const opts = {
+            include: flightsLayer
+        }
+        scene.hitTest(e, opts).then((response) => {
+            if(response.results.length) {
+                console.log("CAPTAIN! WE'VE BEEN HIT!")
+            }
+        })
+    })
+
+    //trigger actions for search widget after a search is completed
     searchWidget.on("search-complete", (e) => {
+        //get the icao id from the selected search item
         let icao = e.results[0].results[0].target.attributes.Icao_Id;
-        let weekStart = getMonday();
+        //call getWeek function to get the beginning time for the time scale
+        let weekStart = getWeek();
+        //get the current epoch time in seconds
         let current = Math.floor(Date.now() / 1000);
+        //construct arrival and departure urls with beginning and end times
         let arrivalUrl = "https://opensky-network.org/api/flights/arrival?airport=" + icao + "&begin=" + weekStart + "&end=" + current
         let departureUrl = "https://opensky-network.org/api/flights/departure?airport=" + icao + "&begin=" + weekStart + "&end=" + current
 
+        //call the arrival and departure functions with the constructed api urls
         callArrivals(arrivalUrl);
-
         callDepartures(departureUrl);
 
     });
@@ -275,7 +298,7 @@ require([
     };
 
     //function to get last 7 days
-    function getMonday() {
+    function getWeek() {
         //current date
         date = new Date();
         //6 days ago
@@ -294,7 +317,7 @@ require([
         let password = "ColtEverett2301!";
         let base64 = btoa(username + ":" + password);
 
-        //send ajax call to the opensky network api
+        //send ajax GET request to the opensky network api
         $.ajax({
             url: "https://opensky-network.org/api/states/all",
             type: "GET",
@@ -494,6 +517,7 @@ require([
                 
             }
         });
+        //continuously call function every 15 seconds making map near-real-time
         setTimeout(callAPI, 15000);
     };
     callAPI();
