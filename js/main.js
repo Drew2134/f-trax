@@ -451,11 +451,11 @@ require([
                             valueExpression: "$view.scale",
                             stops: [
                                 {
-                                    size: 3500,
+                                    size: 2000,
                                     value: 2500000
                                 },
                                 {
-                                    size: 3500,
+                                    size: 2000,
                                     value: 5000000
                                 }
                             ],
