@@ -554,5 +554,6 @@ require([
 
     function resizePlanes(scale, flightsLayer) {
         flightsLayer.size = 5000
+        console.log(scale)
     }
 });
