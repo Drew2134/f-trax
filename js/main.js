@@ -517,7 +517,7 @@ require([
         const opts = {
             include: flightsLayer
         }
-        map.hitTest(e, opts).then((response) => {
+        scene.hitTest(e, opts).then((response) => {
             if(response.results.length) {
                 console.log("CAPTAIN! WE'VE BEEN HIT!")
             }
