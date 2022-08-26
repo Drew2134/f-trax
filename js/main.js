@@ -422,7 +422,9 @@ require([
                         { size: 200, value: 9244648 },
                         { size: 300, value: 73957190 },
                         { size: 400, value: 591657527 }
-                    ]
+                    ],
+
+                    axis: "height"
                 };
 
                 //Stylize the flights with ESRI Airplane Web Styles
