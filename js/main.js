@@ -302,7 +302,7 @@ require([
                 $("#departures").html(numberDepartures)
             },
             error: () => {
-                $("departures").html("No Data");
+                $("#departures").html("No Data");
             }
         });
     };
