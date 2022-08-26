@@ -416,7 +416,7 @@ require([
                 const sizeVV = {
                     type: "size",
           
-                    valueExpression: "$scene.scale",
+                    valueExpression: scene.scale,
           
                     stops: [
                         { size: 100, value: 1155581 },
