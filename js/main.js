@@ -175,7 +175,7 @@ require([
             tilt: 35
         }
     });
-    console.log(scene.scale)
+    scene.when().then(console.log(scene.scale))
 
     //allow docking of popup
     scene.popup.dockEnabled = true;
