@@ -124,7 +124,7 @@ require([
     aptLayer.renderer = {
         type: "simple",
         symbol: aptSymbol
-    }
+    };
 
     //link to runways geojson data
     const rnwyGeoJSON = "data/runways.geojson";
@@ -189,7 +189,7 @@ require([
             width: 5000,
             height: 5000
         }
-    }
+    };
 
     //home widget - add to top-left map container
     const homeButton = new Home({
@@ -232,20 +232,20 @@ require([
     //trigger actions for search widget after a search is completed
     searchWidget.on("search-complete", (e) => {
         //send the icao id from the selected search item to gatherURLConstructs function
-        gatherURLConstructs(e.results[0].results[0].target.attributes.Icao_Id)
+        gatherURLConstructs(e.results[0].results[0].target.attributes.Icao_Id);
     });
     
     //click event listener on the airports layer
     scene.on("click", (e) => {
         const opts = {
             include: aptLayer
-        }
+        };
         //listen for hit on airport layer
         scene.hitTest(e, opts).then((response) => {
             //check if hit test resulted in a match 
             if(response.results.length) {
                 //call gatherURLConstructs function with resulting match Icao Id
-                gatherURLConstructs(response.results[0].graphic.attributes.Icao_Id)
+                gatherURLConstructs(response.results[0].graphic.attributes.Icao_Id);
             }
         });
     });
@@ -256,8 +256,8 @@ require([
         //get the current epoch time in seconds
         let current = Math.floor(Date.now() / 1000);
         //construct arrival and departure urls with beginning and end times
-        let arrivalUrl = "https://opensky-network.org/api/flights/arrival?airport=" + icao + "&begin=" + weekStart + "&end=" + current
-        let departureUrl = "https://opensky-network.org/api/flights/departure?airport=" + icao + "&begin=" + weekStart + "&end=" + current
+        let arrivalUrl = "https://opensky-network.org/api/flights/arrival?airport=" + icao + "&begin=" + weekStart + "&end=" + current;
+        let departureUrl = "https://opensky-network.org/api/flights/departure?airport=" + icao + "&begin=" + weekStart + "&end=" + current;
 
         //call the arrival and departure functions with the constructed api urls
         callArrivals(arrivalUrl);
@@ -364,12 +364,12 @@ require([
 
                 //loop through json items and add them in the proper format to the geojson var
                 jsonData.states.forEach((item) => {
-                    let geoJSONFeature = {}
-                    geoJSONFeature["type"] = "Feature"
+                    let geoJSONFeature = {};
+                    geoJSONFeature["type"] = "Feature";
                     geoJSONFeature["geometry"] = {
                         "type": "Point",
                         "coordinates": [item[5], item[6], item[7]]
-                    }
+                    };
                     geoJSONFeature["properties"] = {
                         "icao": item[0],
                         "callsign": item[1],
@@ -381,8 +381,8 @@ require([
                         "true_track": item[10],
                         "vertical_rate": item[11],
                         "category": item[16]
-                    }
-                    geoJson.features.push(geoJSONFeature)
+                    };
+                    geoJson.features.push(geoJSONFeature);
                 });
 
                 //turn geojson object into JSON string
@@ -530,15 +530,15 @@ require([
                 //check to see if flights layer has been loaded yet
                 if(map.findLayerById("flights")){
                     //always add the flights layer to position 1 in the layer list
-                    map.add(flightsLayer, 1)
+                    map.add(flightsLayer, 1);
                     //.5 second delay after adding flight layer to make transition appear smoother
                     //layer is quite large and takes a second to render
                     setTimeout(() => {
                         //remove the previous flights layer
-                        map.remove(map.layers.items[0])
+                        map.remove(map.layers.items[0]);
                     }, 500)
                 } else {
-                    map.add(flightsLayer, 0)
+                    map.add(flightsLayer, 0);
                 };
                 
             }
