@@ -230,22 +230,8 @@ require([
 
     //trigger actions for search widget after a search is completed
     searchWidget.on("search-complete", (e) => {
+        //send the icao id from the selected search item to gatherURLConstructs function
         gatherURLConstructs(e.results[0].results[0].target.attributes.Icao_Id)
-        /*
-        //get the icao id from the selected search item
-        let icao = e.results[0].results[0].target.attributes.Icao_Id;
-        //call getWeek function to get the beginning time for the time scale
-        let weekStart = getWeek();
-        //get the current epoch time in seconds
-        let current = Math.floor(Date.now() / 1000);
-        //construct arrival and departure urls with beginning and end times
-        let arrivalUrl = "https://opensky-network.org/api/flights/arrival?airport=" + icao + "&begin=" + weekStart + "&end=" + current
-        let departureUrl = "https://opensky-network.org/api/flights/departure?airport=" + icao + "&begin=" + weekStart + "&end=" + current
-
-        //call the arrival and departure functions with the constructed api urls
-        callArrivals(arrivalUrl);
-        callDepartures(departureUrl);*/
-
     });
     
     scene.on("click", (e) => {
@@ -254,7 +240,7 @@ require([
         }
         scene.hitTest(e, opts).then((response) => {
             if(response.results.length) {
-                console.log("CAPTAIN! WE'VE BEEN HIT!")
+                console.log(response)
             }
         })
     })
