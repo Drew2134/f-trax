@@ -484,7 +484,8 @@ require([
                 });
                 
                 scene.watch("scale", () => {
-                    console.log(scene.camera.position.z)
+                    console.log(scene.camera.position.z,
+                        flightsLayer.renderer)
                 })
 
                 //construct a popup template for flights
