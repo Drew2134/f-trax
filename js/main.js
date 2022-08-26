@@ -245,6 +245,17 @@ require([
         callDepartures(departureUrl);
 
     });
+    
+    scene.on("click", (e) => {
+        const opts = {
+            include: aptLayer
+        }
+        scene.hitTest(e, opts).then((response) => {
+            if(response.results.length) {
+                console.log("CAPTAIN! WE'VE BEEN HIT!")
+            }
+        })
+    })
 
     function callArrivals(url) {
         let username = "andrew_winchell";
@@ -299,8 +310,6 @@ require([
         //return epoch time of weekStart
         return Math.floor(weekStart / 1000);
     };
-
-    var flightsLayer = null;
 
     function callAPI() {
         //use free username and password for api authentication
@@ -423,7 +432,7 @@ require([
                 };
 
                 //construct the flights layer from the URL (line 299)
-                flightsLayer = new GeoJSONLayer({
+                const flightsLayer = new GeoJSONLayer({
                     id: "flights",
                     url: url,
                     hasZ: true,
@@ -512,15 +521,4 @@ require([
         setTimeout(callAPI, 15000);
     };
     callAPI();
-    
-    scene.on("click", (e) => {
-        const opts = {
-            include: flightsLayer
-        }
-        scene.hitTest(e, opts).then((response) => {
-            if(response.results.length) {
-                console.log("CAPTAIN! WE'VE BEEN HIT!")
-            }
-        })
-    })
 });
