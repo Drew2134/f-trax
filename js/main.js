@@ -228,17 +228,6 @@ require([
     //built into library from calcite-maps
     CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
 
-    scene.on("click", (e) => {
-        const opts = {
-            include: flightsLayer
-        }
-        scene.hitTest(e, opts).then((response) => {
-            if(response.results.length) {
-                console.log("CAPTAIN! WE'VE BEEN HIT!")
-            }
-        })
-    })
-
     //trigger actions for search widget after a search is completed
     searchWidget.on("search-complete", (e) => {
         //get the icao id from the selected search item
@@ -521,4 +510,15 @@ require([
         setTimeout(callAPI, 15000);
     };
     callAPI();
+
+    scene.on("click", (e) => {
+        const opts = {
+            include: flightsLayer
+        }
+        scene.hitTest(e, opts).then((response) => {
+            if(response.results.length) {
+                console.log("CAPTAIN! WE'VE BEEN HIT!")
+            }
+        })
+    })
 });
