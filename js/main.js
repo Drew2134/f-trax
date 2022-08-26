@@ -235,16 +235,20 @@ require([
         gatherURLConstructs(e.results[0].results[0].target.attributes.Icao_Id)
     });
     
+    //click event listener on the airports layer
     scene.on("click", (e) => {
         const opts = {
             include: aptLayer
         }
+        //listen for hit on airport layer
         scene.hitTest(e, opts).then((response) => {
+            //check if hit test resulted in a match 
             if(response.results.length) {
+                //call gatherURLConstructs function with resulting match Icao Id
                 gatherURLConstructs(response.results[0].graphic.attributes.Icao_Id)
             }
-        })
-    })
+        });
+    });
 
     function gatherURLConstructs(icao) {
         //call getWeek function to get the beginning time for the time scale
@@ -262,10 +266,12 @@ require([
     }
 
     function callArrivals(url) {
+        //use free username and password for api authentication
         let username = "andrew_winchell";
         let password = "ColtEverett2301!";
         let base64 = btoa(username + ":" + password);
 
+        //send ajax GET request to the opensky network api
         $.ajax({
             url: url,
             type: "GET",
@@ -274,11 +280,13 @@ require([
             headers: {
                 "Authorization": "Basic " + base64
             },
+            //on successful api return, set arrivals html and css
             success: (jsonData) => {
                 let numberArrivals = jsonData.length;
                 $("#arrivals").html(numberArrivals);
                 $("#arrivals").css("color", "green");
             },
+            //on 404 error, change html to No Data and font color red
             error: () => {
                 $("#arrivals").html("No Data");
                 $("#arrivals").css("color", "red");
@@ -287,10 +295,12 @@ require([
     };
 
     function callDepartures(url) {
+        //use free username and password for api authentication
         let username = "andrew_winchell";
         let password = "ColtEverett2301!";
         let base64 = btoa(username + ":" + password);
 
+        //send ajax GET request to the opensky network api
         $.ajax({
             url: url,
             type: "GET",
@@ -299,11 +309,13 @@ require([
             headers: {
                 "Authorization": "Basic " + base64
             },
+            //on successful api return, set arrivals html and css
             success: (jsonData) => {
                 let numberDepartures = jsonData.length;
                 $("#departures").html(numberDepartures);
                 $("#departures").css("color", "green");
             },
+            //on 404 error, change html to No Data and font color red
             error: () => {
                 $("#departures").html("No Data");
                 $("#departures").css("color", "red");
