@@ -448,7 +448,21 @@ require([
                         },
                         {
                             type: "size",
-                            value: 1500,
+                            valueExpression: "$view.scale",
+                            stops: [
+                                {
+                                    size: 1,
+                                    value: 1
+                                },
+                                {
+                                    size: 2,
+                                    value: 2,
+                                },
+                                {
+                                    size: 3,
+                                    scale: 3
+                                }
+                            ],
                             axis: "height"
                         }
                     ]
@@ -469,8 +483,8 @@ require([
                     copyright: "The OpenSky Network, https://opensky-network.org",
                 });
                 
-                scene.on("mouse-wheel", () => {
-                    resizePlanes(scene.camera.position.z, flightsLayer)
+                scene.watch("scale", () => {
+                    console.log(scene.camera.position.z)
                 })
 
                 //construct a popup template for flights
@@ -548,9 +562,4 @@ require([
         setTimeout(callAPI, 15000);
     };
     callAPI();
-
-    function resizePlanes(scale, flightsLayer) {
-        flightsLayer.size = 5000
-        console.log(scale)
-    }
 });
