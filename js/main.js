@@ -176,6 +176,7 @@ require([
         }
     });
 
+    console.log(scene.camera.position.z)
     //allow docking of popup
     scene.popup.dockEnabled = true;
 
