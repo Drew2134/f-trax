@@ -446,16 +446,18 @@ require([
                             field: "vertical_rate",
                             axis: "tilt"
                         },
+                        //set the size of the airplanes, not true to scale
+                        //appear much larger than real life only for visual representation
                         {
                             type: "size",
                             valueExpression: "$view.scale",
                             stops: [
                                 {
-                                    size: 2000,
+                                    size: 2500,
                                     value: 2500000
                                 },
                                 {
-                                    size: 2000,
+                                    size: 2500,
                                     value: 5000000
                                 }
                             ],
@@ -550,8 +552,8 @@ require([
                 
             }
         });
-        //continuously call function every 15 seconds making map near-real-time
-        setTimeout(callAPI, 15000);
+        //continuously call function every 10 seconds making map near-real-time
+        setTimeout(callAPI, 10000);
     };
     callAPI();
 });
