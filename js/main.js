@@ -450,8 +450,7 @@ require([
                             type: "size",
                             valueExpression: scene.camera.position.z,//"$view.scale",
                             stops: [
-                                {size: 50, value:   2500000},
-                                {size: 5000, value: 3500000}
+                                {size: 500, value:   2500000}
                             ],
                             axis: "height"
                         }
