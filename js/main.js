@@ -419,9 +419,9 @@ require([
           
                     stops: [
                         { size: 100, value: 1155581 },
-                        { size: 200, value: 9244648 },
-                        { size: 300, value: 73957190 },
-                        { size: 400, value: 591657527 }
+                        { size: 500, value: 9244648 },
+                        { size: 500, value: 73957190 },
+                        { size: 500, value: 591657527 }
                     ],
 
                     axis: "height"
