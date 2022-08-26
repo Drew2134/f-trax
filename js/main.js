@@ -276,7 +276,10 @@ require([
             },
             success: (jsonData) => {
                 let numberArrivals = jsonData.length;
-                $("#arrivals").html(numberArrivals)
+                $("#arrivals").html(numberArrivals);
+            },
+            error: () => {
+                $("arrivals").html("No Data");
             }
         });
     };
@@ -297,6 +300,9 @@ require([
             success: (jsonData) => {
                 let numberDepartures = jsonData.length;
                 $("#departures").html(numberDepartures)
+            },
+            error: () => {
+                $("departures").html("No Data");
             }
         });
     };
