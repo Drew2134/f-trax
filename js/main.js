@@ -414,17 +414,6 @@ require([
                     styleName: "EsriRealisticTransportationStyle"
                 });
 
-                //scale dependent size visual variable
-                LocationRendererCreator.createRenderer({
-                    layer: flightsLayer,
-                    view: scene,
-                    sizeOptimizationEnabled: sizeOptimizationEnabled
-                }).then((rendererResponse) => {
-                    flightsLayer.renderer = rendererResponse.renderer;
-                }).catch((error) => {
-                    console.log(error)
-                })
-
                 //Stylize the flights with ESRI Airplane Web Styles
                 const planeRenderer = {
                     type: "unique-value",
@@ -460,7 +449,7 @@ require([
                         },
                         {
                             type: "size",
-                            valueExpression: scene.camera.position.z,//"$view.scale",
+                            valueExpression: "$view.scale",
                             stops: [
                                 {size: 50, value:   2500000},
                                 {size: 5000, value: 3500000}
