@@ -300,7 +300,7 @@ require([
         return Math.floor(weekStart / 1000);
     };
 
-    const flightsLayer = null;
+    var flightsLayer = null;
 
     function callAPI() {
         //use free username and password for api authentication
