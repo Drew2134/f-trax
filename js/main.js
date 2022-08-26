@@ -455,7 +455,7 @@ require([
                                     value: 2500000
                                 },
                                 {
-                                    size: 2000,
+                                    size: 3500,
                                     value: 5000000
                                 }
                             ],
@@ -478,11 +478,6 @@ require([
                     },
                     copyright: "The OpenSky Network, https://opensky-network.org",
                 });
-                
-                scene.watch("scale", () => {
-                    console.log(scene.camera.position.z,
-                        largePlane)
-                })
 
                 //construct a popup template for flights
                 const flightsTemplate = {
