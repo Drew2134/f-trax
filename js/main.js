@@ -177,9 +177,6 @@ require([
         }
     });
 
-    scene.on("mouse-wheel", () => {
-        console.log(scene.camera.position.z)
-    })
     //allow docking of popup
     scene.popup.dockEnabled = true;
 
@@ -475,6 +472,10 @@ require([
                     },
                     copyright: "The OpenSky Network, https://opensky-network.org",
                 });
+                
+                scene.on("mouse-wheel", () => {
+                    resizePlanes(scene.camera.position.z, flightsLayer)
+                })
 
                 //construct a popup template for flights
                 const flightsTemplate = {
@@ -551,4 +552,8 @@ require([
         setTimeout(callAPI, 15000);
     };
     callAPI();
+
+    function resizePlanes(scale, flightsLayer) {
+        flightsLayer.size = 5000
+    }
 });
