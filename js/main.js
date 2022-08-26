@@ -451,16 +451,12 @@ require([
                             valueExpression: "$view.scale",
                             stops: [
                                 {
-                                    size: 1,
-                                    value: 500000
+                                    size: 50,
+                                    value: 2500000
                                 },
                                 {
-                                    size: 2,
-                                    value: 5000000,
-                                },
-                                {
-                                    size: 3,
-                                    scale: 10000000
+                                    size: 2000,
+                                    value: 5000000
                                 }
                             ],
                             axis: "height"
