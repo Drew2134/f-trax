@@ -412,21 +412,6 @@ require([
                     styleName: "EsriRealisticTransportationStyle"
                 });
 
-                const sizeVV = {
-                    type: "size",
-          
-                    valueExpression: scene.scale,
-          
-                    stops: [
-                        { size: 100, value: 1155581 },
-                        { size: 500, value: 9244648 },
-                        { size: 500, value: 73957190 },
-                        { size: 500, value: 591657527 }
-                    ],
-
-                    axis: "height"
-                };
-
                 //Stylize the flights with ESRI Airplane Web Styles
                 const planeRenderer = {
                     type: "unique-value",
@@ -460,7 +445,15 @@ require([
                             field: "vertical_rate",
                             axis: "tilt"
                         },
-                        sizeVV
+                        {
+                            type: "size",
+                            valueExpression: "$view.scale",
+                            stops: [
+                                {size: 50, value:   2500000},
+                                {size: 5000, value: 5000000}
+                            ],
+                            axis: "height"
+                        }
                     ]
                 };
 
