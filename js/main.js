@@ -177,7 +177,7 @@ require([
         }
     });
 
-    scene.on("resize", () => {
+    scene.on("mouse-wheel", () => {
         console.log(scene.camera.position.z)
     })
     //allow docking of popup
