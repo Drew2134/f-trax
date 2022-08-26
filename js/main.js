@@ -452,15 +452,15 @@ require([
                             stops: [
                                 {
                                     size: 1,
-                                    value: 1
+                                    value: 500000
                                 },
                                 {
                                     size: 2,
-                                    value: 2,
+                                    value: 5000000,
                                 },
                                 {
                                     size: 3,
-                                    scale: 3
+                                    scale: 10000000
                                 }
                             ],
                             axis: "height"
