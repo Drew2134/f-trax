@@ -46,7 +46,7 @@ require([
             "Owner_Name",
             "ARTCC_Id",
             "ARTCC_Name",
-            "Icao_Ident"
+            "Icao_Id"
         ],
         //only show facilities that are airports, publilc, and are in the U.S.
         definitionExpression: "Fac_Type = 'AIRPORT' AND Fac_Use = 'PU' AND State_Name IS NOT NULL"
@@ -241,7 +241,7 @@ require([
         }
         scene.hitTest(e, opts).then((response) => {
             if(response.results.length) {
-                gatherURLConstructs(response.results[0].graphic.attributes.Icao_Ident)
+                gatherURLConstructs(response.results[0].graphic.attributes.Icao_Id)
             }
         })
     })
