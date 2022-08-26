@@ -41,3 +41,10 @@ html, body {
     font-size: 32pt;
     font-weight: bold;
 }
+
+#dropdownTitle {
+    text-align: center;
+    padding: 5px;
+    font-size: 16pt;
+    font-weight: bold;
+}
