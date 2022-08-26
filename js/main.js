@@ -300,6 +300,8 @@ require([
         return Math.floor(weekStart / 1000);
     };
 
+    const flightsLayer = null;
+
     function callAPI() {
         //use free username and password for api authentication
         let username = "andrew_winchell";
@@ -421,7 +423,7 @@ require([
                 };
 
                 //construct the flights layer from the URL (line 299)
-                const flightsLayer = new GeoJSONLayer({
+                flightsLayer = new GeoJSONLayer({
                     id: "flights",
                     url: url,
                     hasZ: true,
@@ -510,26 +512,15 @@ require([
         setTimeout(callAPI, 15000);
     };
     callAPI();
-
-    scene
-        .when()
-        .then(() => {
-            return flightsLayer.when();
-        })
-        .then((layer) =>{
-            return scene.whenLayerView(layer);
-        })
-        .then((layerView) => {
-            scene.on("click", (e) => {
-                const opts = {
-                    include: flightsLayer
-                }
-                map.hitTest(e, opts).then((response) => {
-                    if(response.results.length) {
-                        console.log("CAPTAIN! WE'VE BEEN HIT!")
-                    }
-                })
-            })
-        })
     
+    scene.on("click", (e) => {
+        const opts = {
+            include: flightsLayer
+        }
+        map.hitTest(e, opts).then((response) => {
+            if(response.results.length) {
+                console.log("CAPTAIN! WE'VE BEEN HIT!")
+            }
+        })
+    })
 });
