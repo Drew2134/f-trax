@@ -5,6 +5,7 @@ require([
     "esri/layers/GeoJSONLayer",
     "esri/views/SceneView",
     "esri/symbols/WebStyleSymbol",
+    "esri/smartMapping/renderers/location",
 
     //Widgets
     "esri/widgets/Home",
@@ -23,7 +24,7 @@ require([
     //Dojo
     "dojo/domReady!"
 
-], function(esriConfig, WebScene, GeoJSONLayer, SceneView, WebStyleSymbol, Home, Search, Collapse, Dropdown, CalciteMaps, CalciteMapArcGISSupport){
+], function(esriConfig, WebScene, GeoJSONLayer, SceneView, WebStyleSymbol, LocationRendererCreator, Home, Search, Collapse, Dropdown, CalciteMaps, CalciteMapArcGISSupport){
 
     //esri agol api key
     esriConfig.apiKey = "AAPKb765a73f61db40b189cd2ec292a872aaUGEazH9qCAdMNXi_0IzSi0RV3jKMpqezs6gUtr8xIRhZTPMnXU8AbU5t3L-WxZFQ";
@@ -412,6 +413,17 @@ require([
                     name: "Airplane_Large_Passenger",
                     styleName: "EsriRealisticTransportationStyle"
                 });
+
+                //scale dependent size visual variable
+                LocationRendererCreator.createRenderer({
+                    layer: flightsLayer,
+                    view: scene,
+                    sizeOptimizationEnabled: sizeOptimizationEnabled
+                }).then((rendererResponse) => {
+                    flightsLayer.renderer = rendererResponse.renderer;
+                }).catch((error) => {
+                    console.log(error)
+                })
 
                 //Stylize the flights with ESRI Airplane Web Styles
                 const planeRenderer = {
