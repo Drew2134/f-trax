@@ -230,6 +230,8 @@ require([
 
     //trigger actions for search widget after a search is completed
     searchWidget.on("search-complete", (e) => {
+        gatherURLConstructs(e.results[0].results[0].target.attributes.Icao_Id)
+        /*
         //get the icao id from the selected search item
         let icao = e.results[0].results[0].target.attributes.Icao_Id;
         //call getWeek function to get the beginning time for the time scale
@@ -242,7 +244,7 @@ require([
 
         //call the arrival and departure functions with the constructed api urls
         callArrivals(arrivalUrl);
-        callDepartures(departureUrl);
+        callDepartures(departureUrl);*/
 
     });
     
@@ -256,6 +258,21 @@ require([
             }
         })
     })
+
+    function gatherURLConstructs(icao) {
+        //call getWeek function to get the beginning time for the time scale
+        let weekStart = getWeek();
+        //get the current epoch time in seconds
+        let current = Math.floor(Date.now() / 1000);
+        //construct arrival and departure urls with beginning and end times
+        let arrivalUrl = "https://opensky-network.org/api/flights/arrival?airport=" + icao + "&begin=" + weekStart + "&end=" + current
+        let departureUrl = "https://opensky-network.org/api/flights/departure?airport=" + icao + "&begin=" + weekStart + "&end=" + current
+
+        //call the arrival and departure functions with the constructed api urls
+        callArrivals(arrivalUrl);
+        callDepartures(departureUrl);
+
+    }
 
     function callArrivals(url) {
         let username = "andrew_winchell";
