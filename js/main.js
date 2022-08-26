@@ -445,7 +445,7 @@ require([
                             type: "rotation",
                             field: "vertical_rate",
                             axis: "tilt"
-                        },
+                        }/*,
                         {
                             type: "size",
                             valueExpression: scene.camera.position.z,//"$view.scale",
@@ -453,7 +453,7 @@ require([
                                 {size: 500, value:   2500000}
                             ],
                             axis: "height"
-                        }
+                        }*/
                     ]
                 };
 
