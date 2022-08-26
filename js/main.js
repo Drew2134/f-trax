@@ -277,9 +277,11 @@ require([
             success: (jsonData) => {
                 let numberArrivals = jsonData.length;
                 $("#arrivals").html(numberArrivals);
+                $("#arrivals").css("color", "green");
             },
             error: () => {
-                $("arrivals").html("No Data");
+                $("#arrivals").html("No Data");
+                $("#arrivals").css("color", "red");
             }
         });
     };
@@ -299,10 +301,12 @@ require([
             },
             success: (jsonData) => {
                 let numberDepartures = jsonData.length;
-                $("#departures").html(numberDepartures)
+                $("#departures").html(numberDepartures);
+                $("#departures").css("color", "green");
             },
             error: () => {
                 $("#departures").html("No Data");
+                $("#departures").css("color", "red");
             }
         });
     };
