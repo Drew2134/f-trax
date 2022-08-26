@@ -418,10 +418,10 @@ require([
                     valueExpression: "$view.scale",
           
                     stops: [
-                        { size: 9, value: 1155581 },
-                        { size: 599, value: 9244648 },
-                        { size: 3, value: 73957190 },
-                        { size: 1.5, value: 591657527 }
+                        { size: 100, value: 1155581 },
+                        { size: 200, value: 9244648 },
+                        { size: 300, value: 73957190 },
+                        { size: 400, value: 591657527 }
                     ]
                 };
 
