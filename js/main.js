@@ -511,14 +511,25 @@ require([
     };
     callAPI();
 
-    scene.on("click", (e) => {
-        const opts = {
-            include: flightsLayer
-        }
-        scene.hitTest(e, opts).then((response) => {
-            if(response.results.length) {
-                console.log("CAPTAIN! WE'VE BEEN HIT!")
-            }
+    scene
+        .when()
+        .then(() => {
+            return flightsLayer.when();
         })
-    })
+        .then((layer) =>{
+            return scene.whenLayerView(layer);
+        })
+        .then((layerView) => {
+            scene.on("click", (e) => {
+                const opts = {
+                    include: flightsLayer
+                }
+                map.hitTest(e, opts).then((response) => {
+                    if(response.results.length) {
+                        console.log("CAPTAIN! WE'VE BEEN HIT!")
+                    }
+                })
+            })
+        })
+    
 });
