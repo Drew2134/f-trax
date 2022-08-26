@@ -20,12 +20,17 @@ require([
     //Calcite Maps ArcGIS Support
     "calcite-maps/calcitemaps-arcgis-support-v0.10",
 
+    //Dojo
     "dojo/domReady!"
+
 ], function(esriConfig, WebScene, GeoJSONLayer, SceneView, WebStyleSymbol, Home, Search, Collapse, Dropdown, CalciteMaps, CalciteMapArcGISSupport){
 
+    //esri agol api key
     esriConfig.apiKey = "AAPKb765a73f61db40b189cd2ec292a872aaUGEazH9qCAdMNXi_0IzSi0RV3jKMpqezs6gUtr8xIRhZTPMnXU8AbU5t3L-WxZFQ";
 
+    //link to airports geojson data
     const aptGeoJSON = "data/airports.geojson";
+    //set aptLayer to use airports geojson
     const aptLayer = new GeoJSONLayer({
         id: "airports",
         url: aptGeoJSON,
@@ -41,9 +46,11 @@ require([
             "ARTCC_Id",
             "ARTCC_Name"
         ],
+        //only show facilities that are airports, publilc, and are in the U.S.
         definitionExpression: "Fac_Type = 'AIRPORT' AND Fac_Use = 'PU' AND State_Name IS NOT NULL"
     });
 
+    //construct popup template for airports
     const aptTemplate = {
         title: "{Fac_Name} AIRPORT - {Loc_Id}",
         content: [
@@ -91,9 +98,10 @@ require([
         ]
     };
 
+    //set popup template on the airports layer
     aptLayer.popupTemplate = aptTemplate;
     
-    //Stylize the airports with ESRI Airport Icon
+    //stylize the airports with ESRI Airport Icon
     let aptSymbol = {
         type: "point-3d",
         symbolLayers: [{
@@ -110,13 +118,15 @@ require([
         }]
     };
     
-    //Render airports with custom style
+    //render airports with custom style
     aptLayer.renderer = {
         type: "simple",
         symbol: aptSymbol
     }
 
+    //link to runways geojson data
     const rnwyGeoJSON = "data/runways.geojson";
+    //set runway layer to use runway geojson
     const rnwyLayer = new GeoJSONLayer({
         id: "runways",
         url: rnwyGeoJSON,
@@ -124,6 +134,7 @@ require([
         minScale: 250000
     });
 
+    //constuct runway symbol style
     let rnwySymbol = {
         type: "simple-line",
         color: "gray",
@@ -131,20 +142,27 @@ require([
         style: "solid"
     };
 
+    //set runway layer rendering to the runway symbol style
     rnwyLayer.renderer = {
         type: "simple",
         symbol: rnwySymbol
     };
 
+    //construct a new web scene using satellite imagery and elevation layer
+    //add airport and runway layers to the map
     const map = new WebScene({
         basemap: "satellite",
         ground: "world-elevation",
         layers: [aptLayer, rnwyLayer]
     });
 
+    //construct new scene view
     const scene = new SceneView({
+        //placed in viewDiv html
         container: "viewDiv",
+        //use the web scene as the map
         map: map,
+        //set initial view extent
         camera: {
             position: {
                 x: -97,
@@ -155,16 +173,21 @@ require([
         }
     });
 
+    //allow docking of popup
     scene.popup.dockEnabled = true;
+    //options for popup docking
     scene.popup.dockOptions = {
+        //do not allow user to decide on docking
         buttonEnabled: false,
+        //set when screen is smaller than w*h, popup will automatically dock
+        //should always dock since screen sizes should never be this large
         breakpoint: {
             width: 5000,
             height: 5000
         }
     }
 
-    //Home Widget - add to top-left map container
+    //home Widget - add to top-left map container
     const homeButton = new Home({
         view: scene
     });
@@ -177,7 +200,7 @@ require([
     );
 
 
-    //Search Widget - add to navbar
+    //search widget - add to navbar
     const searchWidget = new Search({
         container: "searchWidgetDiv",
         view: scene,
@@ -251,35 +274,46 @@ require([
         });
     };
 
-    //Function to get last 7 days
+    //function to get last 7 days
     function getMonday() {
+        //current date
         date = new Date();
+        //6 days ago
         var diff = date.getDate() - 6,
+            //set time to 0 to max out the date range
             weekStart = new Date(date.setHours(0, 0, 0, 0));
+        //set the date to 6 days ago
         weekStart.setDate(diff);
+        //return epoch time of weekStart
         return Math.floor(weekStart / 1000);
     };
 
     function callAPI() {
+        //use free username and password for api authentication
         let username = "andrew_winchell";
         let password = "ColtEverett2301!";
         let base64 = btoa(username + ":" + password);
 
+        //send ajax call to the opensky network api
         $.ajax({
             url: "https://opensky-network.org/api/states/all",
             type: "GET",
             dataType: "json",
             async: false,
+            //include authorization to allow for greater number of api calls per day
             headers: {
                 "Authorization": "Basic " + base64
             },
+            //if the call is successfull, call anonymous function with ajax json return
             success: (jsonData) => {
+                //create geojson template
                 var geoJson = {
                     "type": "FeatureCollection",
                     "name": "Active Flights",
                     "features": []
                 };
 
+                //loop through json items and add them in the proper format to the geojson var
                 jsonData.states.forEach((item) => {
                     let geoJSONFeature = {}
                     geoJSONFeature["type"] = "Feature"
@@ -302,28 +336,34 @@ require([
                     geoJson.features.push(geoJSONFeature)
                 });
 
+                //turn geojson object into JSON string
+                //new blob turns json string into file-like object
                 const blob = new Blob([JSON.stringify(geoJson)], {
                     type: "application/json"
                 });
 
+                //turns the blob into a useable url string
                 const url = URL.createObjectURL(blob);
                 
+                //set large plane variable to the esri private plane symbol
                 const privatePlane = new WebStyleSymbol({
                     name: "Airplane_Private",
                     styleName: "EsriRealisticTransportationStyle"
                 });
 
+                //set large plane variable to the esri small passenger plane symbol
                 const smallPlane = new WebStyleSymbol({
                     name: "Airplane_Small_Passenger",
                     styleName: "EsriRealisticTransportationStyle"
                 });
 
+                //set large plane variable to the esri large passenger plane symbol
                 const largePlane = new WebStyleSymbol({
                     name: "Airplane_Large_Passenger",
                     styleName: "EsriRealisticTransportationStyle"
                 });
 
-                //Stylize the airports with ESRI Airport Icon
+                //Stylize the flights with ESRI Airplane Web Styles
                 const planeRenderer = {
                     type: "unique-value",
                     field: "category",
@@ -343,12 +383,14 @@ require([
                         }
                     ],
                     visualVariables: [
+                        //set the direction of the plane based on the true_track rotation field
                         {
                             type: "rotation",
                             field: "true_track",
                             axis: "heading",
                             rotationType: "geographic"
                         },
+                        //set the vertical tilt of the plane based on the vertical_rate field
                         {
                             type: "rotation",
                             field: "vertical_rate",
