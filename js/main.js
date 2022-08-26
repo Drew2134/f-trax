@@ -177,7 +177,9 @@ require([
         }
     });
 
-    console.log(scene.camera.position.z)
+    scene.on("resize", () => {
+        console.log(scene.camera.position.z)
+    })
     //allow docking of popup
     scene.popup.dockEnabled = true;
 
@@ -449,7 +451,7 @@ require([
                         },
                         {
                             type: "size",
-                            valueExpression: "$view.scale",
+                            valueExpression: scene.camera.position.z,//"$view.scale",
                             stops: [
                                 {size: 50, value:   2500000},
                                 {size: 5000, value: 3500000}
